@@ -1561,7 +1561,7 @@ struct usb_string_descriptor_struct usb_string_serial_number_default = {
         {0,0,0,0,0,0,0,0,0,0}
 };
 struct usb_string_descriptor_struct usb_string_xinput_security_descriptor = {
-        178,
+        2 + 88 * 2,
         3,
         {
             'X', 'b', 'o', 'x', ' ', 'S', 'e', 'c', 'u', 'r', 'i', 't', 'y', ' ', 'M', 'e',
