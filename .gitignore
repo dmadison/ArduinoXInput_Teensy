@@ -78,15 +78,21 @@ $RECYCLE.BIN/
 *.lnk
 *.zip
 
-# Teensy Core Subtree
-**/cores/*
-!**/cores/teensy3/
-**/cores/teensy3/*
+## ----------------------------------------------------
+## Arduino XInput - Teensy Boards Files
 
-!**/cores/teensy3/usb_desc.c
-!**/cores/teensy3/usb_desc.h
-!**/cores/teensy3/usb_xinput.c
-!**/cores/teensy3/usb_xinput.h
-!**/cores/teensy3/usb_inst.cpp
-!**/cores/teensy3/usb_serial.h
-!**/cores/teensy3/WProgram.h
+# boards.txt
+teensy/**
+!teensy/avr/
+!teensy/avr/boards.txt
+
+# cores files
+!teensy/avr/cores/
+!teensy/avr/cores/teensy3/
+!teensy/avr/cores/teensy3/usb_desc.c
+!teensy/avr/cores/teensy3/usb_desc.h
+!teensy/avr/cores/teensy3/usb_xinput.c
+!teensy/avr/cores/teensy3/usb_xinput.h
+!teensy/avr/cores/teensy3/usb_inst.cpp
+!teensy/avr/cores/teensy3/usb_serial.h
+!teensy/avr/cores/teensy3/WProgram.h
