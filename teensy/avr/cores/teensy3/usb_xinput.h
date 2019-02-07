@@ -49,8 +49,8 @@ class XInputUSB
 {
 public:
 	static int available(void) {return usb_xinput_available(); }
-	static int recv(void *buffer, uint16_t timeout) { return usb_xinput_recv(buffer, timeout); }
-	static int send(const void *buffer, uint16_t timeout) { return usb_xinput_send(buffer, timeout); }
+	static int recv(void *buffer, uint32_t timeout) { return usb_xinput_recv(buffer, timeout); }
+	static int send(const void *buffer, uint32_t timeout) { return usb_xinput_send(buffer, timeout); }
 };
 
 #endif // __cplusplus
