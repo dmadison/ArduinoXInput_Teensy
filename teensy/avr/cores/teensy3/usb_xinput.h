@@ -35,9 +35,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-int usb_xinput_recv(void *buffer, uint32_t timeout);
-int usb_xinput_available(void);
-int usb_xinput_send(const void *buffer, uint32_t timeout);
+size_t usb_xinput_recv(void *buffer, uint32_t timeout);
+size_t usb_xinput_available(void);
+size_t usb_xinput_send(const void *buffer, uint32_t timeout);
 #ifdef __cplusplus
 }
 #endif
@@ -48,9 +48,9 @@ int usb_xinput_send(const void *buffer, uint32_t timeout);
 class XInputUSB
 {
 public:
-	static int available(void) {return usb_xinput_available(); }
-	static int recv(void *buffer, uint32_t timeout) { return usb_xinput_recv(buffer, timeout); }
-	static int send(const void *buffer, uint32_t timeout) { return usb_xinput_send(buffer, timeout); }
+	static size_t available(void) { return usb_xinput_available(); }
+	static size_t recv(void *buffer, uint32_t timeout) { return usb_xinput_recv(buffer, timeout); }
+	static size_t send(const void *buffer, uint32_t timeout) { return usb_xinput_send(buffer, timeout); }
 };
 
 #endif // __cplusplus
