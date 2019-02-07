@@ -114,6 +114,10 @@ extern int usb_audio_set_feature(void *stp, uint8_t *buf);
 extern void usb_touchscreen_update_callback(void);
 #endif
 
+#ifdef XINPUT_INTERFACE
+extern void (*usb_xinput_recv_callback)(void);
+#endif
+
 
 #ifdef __cplusplus
 }

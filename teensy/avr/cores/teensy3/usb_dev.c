@@ -1035,6 +1035,13 @@ void usb_isr(void)
 					b->desc = BDT_DESC(64, ((uint32_t)b & 8) ? DATA1 : DATA0);
 				}
 			}
+			
+#ifdef XINPUT_INTERFACE
+			// On receipt of control packet, call XInput receive callback
+			if((endpoint == XINPUT_RX_ENDPOINT - 1) && !(stat & 0x08)) {
+				if(usb_xinput_recv_callback != NULL) { usb_xinput_recv_callback(); }
+			}
+#endif
 
 		}
 		USB0_ISTAT = USB_ISTAT_TOKDNE;
