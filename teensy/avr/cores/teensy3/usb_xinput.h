@@ -1,6 +1,7 @@
 /* MIT License
  * 
  * Copyright (c) 2016 Zachery Littell
+ * Modified  (c) 2019 David Madison
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -44,15 +45,13 @@ int usb_xinput_send(const void *buffer, uint32_t timeout);
 
 // C++ interface
 #ifdef __cplusplus
-class usb_xinput_class
+class XInputUSB
 {
 public:
-	int available(void) {return usb_xinput_available(); }
-	int recv(void *buffer, uint16_t timeout) { return usb_xinput_recv(buffer, timeout); }
-	int send(const void *buffer, uint16_t timeout) { return usb_xinput_send(buffer, timeout); }
+	static int available(void) {return usb_xinput_available(); }
+	static int recv(void *buffer, uint16_t timeout) { return usb_xinput_recv(buffer, timeout); }
+	static int send(const void *buffer, uint16_t timeout) { return usb_xinput_send(buffer, timeout); }
 };
-
-extern usb_xinput_class XInputUSB;
 
 #endif // __cplusplus
 
