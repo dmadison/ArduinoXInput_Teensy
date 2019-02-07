@@ -91,6 +91,8 @@ teensy/**
 !teensy/avr/cores/teensy3/
 !teensy/avr/cores/teensy3/usb_desc.c
 !teensy/avr/cores/teensy3/usb_desc.h
+!teensy/avr/cores/teensy3/usb_dev.h
+!teensy/avr/cores/teensy3/usb_dev.c
 !teensy/avr/cores/teensy3/usb_xinput.c
 !teensy/avr/cores/teensy3/usb_xinput.h
 !teensy/avr/cores/teensy3/usb_serial.h
