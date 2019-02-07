@@ -31,6 +31,13 @@
 #ifdef XINPUT_INTERFACE // defined by usb_dev.h -> usb_desc.h
 #if F_CPU >= 20000000
 
+// Function returns whether the microcontroller's USB
+// is configured or not (connected to driver)
+bool usb_xinput_connected(void)
+{
+	return usb_configuration;
+}
+
 //Function receives packets from the RX endpoint
 //We will use this for receiving LED commands
 size_t usb_xinput_recv(void *buffer, uint32_t timeout)

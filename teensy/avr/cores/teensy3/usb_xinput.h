@@ -30,11 +30,13 @@
 #if defined(XINPUT_INTERFACE)
 
 #include <inttypes.h>
+#include <stdbool.h>
 
 // C language implementation
 #ifdef __cplusplus
 extern "C" {
 #endif
+bool   usb_xinput_connected(void);
 size_t usb_xinput_recv(void *buffer, uint32_t timeout);
 size_t usb_xinput_available(void);
 size_t usb_xinput_send(const void *buffer, uint32_t timeout);
@@ -48,6 +50,7 @@ size_t usb_xinput_send(const void *buffer, uint32_t timeout);
 class XInputUSB
 {
 public:
+	static bool   connected(void) { return usb_xinput_connected(); }
 	static size_t available(void) { return usb_xinput_available(); }
 	static size_t recv(void *buffer, uint32_t timeout) { return usb_xinput_recv(buffer, timeout); }
 	static size_t send(const void *buffer, uint32_t timeout) { return usb_xinput_send(buffer, timeout); }
