@@ -25,4 +25,6 @@ A massive thank you to Zach Littell, whose did all of the original legwork in pu
 
 ## License
 
-The files in this repository are licensed under the permissive [MIT license](https://opensource.org/licenses/MIT). See the [LICENSE](LICENSE) file for more information.
+The original Teensy core files and their modified versions are licensed under a modified version of the permissive [MIT license](https://opensource.org/licenses/MIT). Newly contributed files are licensed under the MIT license with no additional stipulations.
+
+See the [LICENSE](LICENSE.txt) file for more information.
