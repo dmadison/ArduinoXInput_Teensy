@@ -31,6 +31,8 @@
 #ifdef XINPUT_INTERFACE // defined by usb_dev.h -> usb_desc.h
 #if F_CPU >= 20000000
 
+void (*usb_xinput_recv_callback)(void) = NULL;
+
 // Function returns whether the microcontroller's USB
 // is configured or not (connected to driver)
 bool usb_xinput_connected(void)
