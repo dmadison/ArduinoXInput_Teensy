@@ -44,7 +44,7 @@ bool usb_xinput_connected(void)
 
 //Function receives packets from the RX endpoint
 //We will use this for receiving LED commands
-int usb_xinput_recv(void *buffer)
+int usb_xinput_recv(void *buffer, uint8_t nbytes)
 {
 	usb_packet_t *rx_packet;
 	uint32_t begin = millis();
@@ -56,9 +56,9 @@ int usb_xinput_recv(void *buffer)
 		if (millis() - begin > timeout || !timeout) return 0;
 		yield();
 	}
-	memcpy(buffer, rx_packet->buf, XINPUT_RX_SIZE);
+	memcpy(buffer, rx_packet->buf, nbytes);
 	usb_free(rx_packet);
-	return XINPUT_RX_SIZE;
+	return nbytes;
 }
 
 //Function to check if packets are available
@@ -77,7 +77,7 @@ int usb_xinput_available(void)
 
 //Function used to send packets out of the TX endpoint
 //This is used to send button reports
-int usb_xinput_send(const void *buffer)
+int usb_xinput_send(const void *buffer, uint8_t nbytes)
 {
 	usb_packet_t *tx_packet;
 	uint32_t begin = millis();
@@ -91,10 +91,10 @@ int usb_xinput_send(const void *buffer)
 		if (millis() - begin > timeout) return 0;
 		yield();
 	}
-	memcpy(tx_packet->buf, buffer, XINPUT_TX_SIZE);
-	tx_packet->len = XINPUT_TX_SIZE;
+	memcpy(tx_packet->buf, buffer, nbytes);
+	tx_packet->len = nbytes;
 	usb_tx(XINPUT_TX_ENDPOINT, tx_packet);
-	return XINPUT_TX_SIZE;
+	return nbytes;
 }
 
 #endif // F_CPU
