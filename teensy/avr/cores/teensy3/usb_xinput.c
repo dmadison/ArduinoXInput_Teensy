@@ -31,6 +31,8 @@
 #ifdef XINPUT_INTERFACE // defined by usb_dev.h -> usb_desc.h
 #if F_CPU >= 20000000
 
+static const uint32_t timeout = 250;  // ms
+
 void (*usb_xinput_recv_callback)(void) = NULL;
 
 // Function returns whether the microcontroller's USB
@@ -42,7 +44,7 @@ bool usb_xinput_connected(void)
 
 //Function receives packets from the RX endpoint
 //We will use this for receiving LED commands
-int usb_xinput_recv(void *buffer, uint32_t timeout)
+int usb_xinput_recv(void *buffer)
 {
 	usb_packet_t *rx_packet;
 	uint32_t begin = millis();
@@ -75,7 +77,7 @@ int usb_xinput_available(void)
 
 //Function used to send packets out of the TX endpoint
 //This is used to send button reports
-int usb_xinput_send(const void *buffer, uint32_t timeout)
+int usb_xinput_send(const void *buffer)
 {
 	usb_packet_t *tx_packet;
 	uint32_t begin = millis();
