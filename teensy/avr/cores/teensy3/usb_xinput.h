@@ -36,10 +36,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-bool   usb_xinput_connected(void);
-size_t usb_xinput_recv(void *buffer, uint32_t timeout);
-size_t usb_xinput_available(void);
-size_t usb_xinput_send(const void *buffer, uint32_t timeout);
+bool usb_xinput_connected(void);
+int  usb_xinput_recv(void *buffer, uint32_t timeout);
+int  usb_xinput_available(void);
+int  usb_xinput_send(const void *buffer, uint32_t timeout);
 extern void (*usb_xinput_recv_callback)(void);
 #ifdef __cplusplus
 }
@@ -51,11 +51,11 @@ extern void (*usb_xinput_recv_callback)(void);
 class XInputUSB
 {
 public:
-	static bool   connected(void) { return usb_xinput_connected(); }
-	static size_t available(void) { return usb_xinput_available(); }
-	static size_t recv(void *buffer, uint32_t timeout) { return usb_xinput_recv(buffer, timeout); }
-	static size_t send(const void *buffer, uint32_t timeout) { return usb_xinput_send(buffer, timeout); }
-	static void   setRecvCallback(void (*callback)(void)) { usb_xinput_recv_callback = callback; }
+	static bool connected(void) { return usb_xinput_connected(); }
+	static int  available(void) { return usb_xinput_available(); }
+	static int  recv(void *buffer, uint32_t timeout) { return usb_xinput_recv(buffer, timeout); }
+	static int  send(const void *buffer, uint32_t timeout) { return usb_xinput_send(buffer, timeout); }
+	static void setRecvCallback(void (*callback)(void)) { usb_xinput_recv_callback = callback; }
 };
 
 #endif // __cplusplus
