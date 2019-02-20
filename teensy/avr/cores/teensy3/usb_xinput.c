@@ -42,8 +42,19 @@ bool usb_xinput_connected(void)
 	return usb_configuration;
 }
 
-//Function receives packets from the RX endpoint
-//We will use this for receiving LED commands
+// Function to check if packets are available
+// to be received on the RX endpoint
+int usb_xinput_available(void)
+{
+	uint32_t count;
+
+	if (!usb_configuration) return 0;
+	count = usb_rx_byte_count(XINPUT_RX_ENDPOINT);
+	return count;
+}
+
+
+// Function receives packets from the RX endpoint
 int usb_xinput_recv(void *buffer, uint8_t nbytes)
 {
 	usb_packet_t *rx_packet;
@@ -61,22 +72,11 @@ int usb_xinput_recv(void *buffer, uint8_t nbytes)
 	return nbytes;
 }
 
-//Function to check if packets are available
-//to be received on the RX endpoint
-int usb_xinput_available(void)
-{
-	uint32_t count;
-
-	if (!usb_configuration) return 0;
-	count = usb_rx_byte_count(XINPUT_RX_ENDPOINT);
-	return count;
-}
-
 // Maximum number of transmit packets to queue so we don't starve other endpoints for memory
 #define TX_PACKET_LIMIT 3
 
-//Function used to send packets out of the TX endpoint
-//This is used to send button reports
+// Function used to send packets out of the TX endpoint
+// This is used to send button reports
 int usb_xinput_send(const void *buffer, uint8_t nbytes)
 {
 	usb_packet_t *tx_packet;

@@ -37,8 +37,8 @@
 extern "C" {
 #endif
 bool usb_xinput_connected(void);
-int  usb_xinput_recv(void *buffer, uint8_t nbytes);
 int  usb_xinput_available(void);
+int  usb_xinput_recv(void *buffer, uint8_t nbytes);
 int  usb_xinput_send(const void *buffer, uint8_t nbytes);
 extern void (*usb_xinput_recv_callback)(void);
 #ifdef __cplusplus
