@@ -38,8 +38,8 @@ extern "C" {
 #endif
 bool usb_xinput_connected(void);
 int  usb_xinput_available(void);
-int  usb_xinput_recv(void *buffer, uint8_t nbytes);
 int  usb_xinput_send(const void *buffer, uint8_t nbytes);
+int  usb_xinput_recv(void *buffer, uint8_t nbytes);
 extern void (*usb_xinput_recv_callback)(void);
 #ifdef __cplusplus
 }
@@ -53,8 +53,8 @@ class XInputUSB
 public:
 	static bool connected(void) { return usb_xinput_connected(); }
 	static int  available(void) { return usb_xinput_available(); }
-	static int  recv(void *buffer, uint8_t nbytes) { return usb_xinput_recv(buffer, nbytes); }
 	static int  send(const void *buffer, uint8_t nbytes) { return usb_xinput_send(buffer, nbytes); }
+	static int  recv(void *buffer, uint8_t nbytes) { return usb_xinput_recv(buffer, nbytes); }
 	static void setRecvCallback(void (*callback)(void)) { usb_xinput_recv_callback = callback; }
 };
 
