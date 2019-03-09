@@ -44,9 +44,9 @@ bool usb_xinput_connected(void)
 
 // Function to check if packets are available
 // to be received on the RX endpoint
-int usb_xinput_available(void)
+uint16_t usb_xinput_available(void)
 {
-	uint32_t count;
+	uint16_t count;
 
 	if (!usb_configuration) return 0;
 	count = usb_rx_byte_count(XINPUT_RX_ENDPOINT);
