@@ -19,6 +19,16 @@ To uninstall, restore your 'teensy' folder from a backup or reinstall Teensyduin
 * [Teensy 3.1](https://www.pjrc.com/store/teensy31.html) / [3.2](https://www.pjrc.com/store/teensy32.html)
 * [Teensy LC](https://www.pjrc.com/teensy/teensyLC.html)
 
+## Limitations
+
+### No Console Support
+
+This will *not* enable you to use your Teensy with an Xbox console! Genuine controllers use a dedicated hardware security chip that handshakes with the console. The Teensy boards do not have this chip, and its security method has not been (openly) broken.
+
+### No Commercial Use
+
+These board definitions make use of Microsoft's VID and PID in order to latch on to the PC driver. As such this is strictly for educational or development use by non-commercial entities.
+
 ## Credits and Contributions
 
 A massive thank you to Zach Littell, whose did all of the original legwork in putting this together. Check out some of his stuff at [zlittell.com](http://www.zlittell.com).
