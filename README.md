@@ -1,4 +1,4 @@
-# Teensy XInput USB Mode
+# Teensy XInput USB Mode [![Build Status](https://travis-ci.org/dmadison/ArduinoXInput_Teensy.svg?branch=master)](https://travis-ci.org/dmadison/ArduinoXInput_Teensy)
 
 The files in this repository will add an additional USB mode ("XInput") to your Teensy 3 board, allowing it to emulate an Xbox gamepad.
 
