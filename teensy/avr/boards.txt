@@ -24,13 +24,13 @@ teensy40.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdl
 teensy40.build.flags.dep=-MMD
 teensy40.build.flags.optimize=-Os
 teensy40.build.flags.cpu=-mthumb -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16
-teensy40.build.flags.defs=-D__IMXRT1062__ -DTEENSYDUINO=147
+teensy40.build.flags.defs=-D__IMXRT1062__ -DTEENSYDUINO=148
 teensy40.build.flags.cpp=-std=gnu++14 -fno-exceptions -fpermissive -fno-rtti -fno-threadsafe-statics -felide-constructors -Wno-error=narrowing
 teensy40.build.flags.c=
 teensy40.build.flags.S=-x assembler-with-cpp
 teensy40.build.flags.ld=-Wl,--gc-sections,--relax "-T{build.core.path}/imxrt1062.ld"
 teensy40.build.flags.libs=-larm_cortexM7lfsp_math -lm -lstdc++
-teensy40.build.fcpu=600000000
+#teensy40.build.fcpu=600000000
 teensy40.serial.restart_cmd=false
 teensy40.menu.usb.serial=Serial
 teensy40.menu.usb.serial.build.usbtype=USB_SERIAL
@@ -84,6 +84,29 @@ teensy40.menu.usb.serial.build.usbtype=USB_SERIAL
 #teensy40.menu.usb.flightsimjoystick.fake_serial=teensy_gateway
 #teensy40.menu.usb.disable=No USB
 #teensy40.menu.usb.disable.build.usbtype=USB_DISABLED
+
+teensy40.menu.speed.600=600 MHz
+teensy40.menu.speed.528=528 MHz
+teensy40.menu.speed.450=450 MHz
+teensy40.menu.speed.396=396 MHz
+teensy40.menu.speed.150=150 MHz
+teensy40.menu.speed.24=24 MHz
+teensy40.menu.speed.720=720 MHz (overclock)
+teensy40.menu.speed.816=816 MHz (overclock)
+teensy40.menu.speed.912=912 MHz (overclock, cooling req'd)
+teensy40.menu.speed.960=960 MHz (overclock, cooling req'd)
+teensy40.menu.speed.1008=1.008 GHz (overclock, cooling req'd)
+teensy40.menu.speed.1008.build.fcpu=1000000000
+teensy40.menu.speed.960.build.fcpu=960000000
+teensy40.menu.speed.912.build.fcpu=912000000
+teensy40.menu.speed.816.build.fcpu=816000000
+teensy40.menu.speed.720.build.fcpu=720000000
+teensy40.menu.speed.600.build.fcpu=600000000
+teensy40.menu.speed.528.build.fcpu=528000000
+teensy40.menu.speed.450.build.fcpu=450000000
+teensy40.menu.speed.396.build.fcpu=396000000
+teensy40.menu.speed.150.build.fcpu=150000000
+teensy40.menu.speed.24.build.fcpu=24000000
 
 teensy40.menu.opt.o2std=Faster
 teensy40.menu.opt.o2std.build.flags.optimize=-O2
@@ -174,179 +197,6 @@ teensy40.menu.keys.usint=US International
 teensy40.menu.keys.usint.build.keylayout=US_INTERNATIONAL
 
 
-#teensy4b1.name=Teensy 4-Beta1
-#teensy4b1.upload.maximum_size=1572864
-#teensy4b1.upload.maximum_data_size=262144
-#teensy4b1.upload.tool=teensyloader
-#teensy4b1.upload.protocol=halfkay
-#teensy4b1.build.board=TEENSY40
-#teensy4b1.build.core=teensy4
-#teensy4b1.build.mcu=imxrt1052
-#teensy4b1.build.warn_data_percentage=99
-#teensy4b1.build.toolchain=arm/bin/
-#teensy4b1.build.command.gcc=arm-none-eabi-gcc
-#teensy4b1.build.command.g++=arm-none-eabi-g++
-#teensy4b1.build.command.ar=arm-none-eabi-gcc-ar
-#teensy4b1.build.command.objcopy=arm-none-eabi-objcopy
-#teensy4b1.build.command.objdump=arm-none-eabi-objdump
-#teensy4b1.build.command.linker=arm-none-eabi-gcc
-#teensy4b1.build.command.size=arm-none-eabi-size
-#teensy4b1.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdlib
-#teensy4b1.build.flags.dep=-MMD
-#teensy4b1.build.flags.optimize=-Os
-#teensy4b1.build.flags.cpu=-mthumb -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16
-#teensy4b1.build.flags.defs=-D__IMXRT1052__ -DTEENSYDUINO=147
-#teensy4b1.build.flags.cpp=-std=gnu++14 -fno-exceptions -fpermissive -fno-rtti -fno-threadsafe-statics -felide-constructors -Wno-error=narrowing
-#teensy4b1.build.flags.c=
-#teensy4b1.build.flags.S=-x assembler-with-cpp
-#teensy4b1.build.flags.ld=-Wl,--gc-sections,--relax "-T{build.core.path}/imxrt1052.ld"
-#teensy4b1.build.flags.libs=-larm_cortexM7lfsp_math -lm -lstdc++
-#teensy4b1.build.fcpu=396000000
-#teensy4b1.serial.restart_cmd=false
-#teensy4b1.menu.usb.serial=Serial
-#teensy4b1.menu.usb.serial.build.usbtype=USB_SERIAL
-#teensy4b1.menu.usb.keyboard=Keyboard
-#teensy4b1.menu.usb.keyboard.build.usbtype=USB_KEYBOARDONLY
-#teensy4b1.menu.usb.keyboard.fake_serial=teensy_gateway
-#teensy4b1.menu.usb.touch=Keyboard + Touch Screen
-#teensy4b1.menu.usb.touch.build.usbtype=USB_TOUCHSCREEN
-#teensy4b1.menu.usb.touch.fake_serial=teensy_gateway
-#teensy4b1.menu.usb.hidtouch=Keyboard + Mouse + Touch Screen
-#teensy4b1.menu.usb.hidtouch.build.usbtype=USB_HID_TOUCHSCREEN
-#teensy4b1.menu.usb.hidtouch.fake_serial=teensy_gateway
-#teensy4b1.menu.usb.hid=Keyboard + Mouse + Joystick
-#teensy4b1.menu.usb.hid.build.usbtype=USB_HID
-#teensy4b1.menu.usb.hid.fake_serial=teensy_gateway
-#teensy4b1.menu.usb.serialhid=Serial + Keyboard + Mouse + Joystick
-#teensy4b1.menu.usb.serialhid.build.usbtype=USB_SERIAL_HID
-#teensy4b1.menu.usb.midi=MIDI
-#teensy4b1.menu.usb.midi.build.usbtype=USB_MIDI
-#teensy4b1.menu.usb.midi.fake_serial=teensy_gateway
-#teensy4b1.menu.usb.midi4=MIDIx4
-#teensy4b1.menu.usb.midi4.build.usbtype=USB_MIDI4
-#teensy4b1.menu.usb.midi4.fake_serial=teensy_gateway
-#teensy4b1.menu.usb.midi16=MIDIx16
-#teensy4b1.menu.usb.midi16.build.usbtype=USB_MIDI16
-#teensy4b1.menu.usb.midi16.fake_serial=teensy_gateway
-#teensy4b1.menu.usb.serialmidi=Serial + MIDI
-#teensy4b1.menu.usb.serialmidi.build.usbtype=USB_MIDI_SERIAL
-#teensy4b1.menu.usb.serialmidi4=Serial + MIDIx4
-#teensy4b1.menu.usb.serialmidi4.build.usbtype=USB_MIDI4_SERIAL
-#teensy4b1.menu.usb.serialmidi16=Serial + MIDIx16
-#teensy4b1.menu.usb.serialmidi16.build.usbtype=USB_MIDI16_SERIAL
-#teensy4b1.menu.usb.audio=Audio
-#teensy4b1.menu.usb.audio.build.usbtype=USB_AUDIO
-#teensy4b1.menu.usb.audio.fake_serial=teensy_gateway
-#teensy4b1.menu.usb.serialmidiaudio=Serial + MIDI + Audio
-#teensy4b1.menu.usb.serialmidiaudio.build.usbtype=USB_MIDI_AUDIO_SERIAL
-#teensy4b1.menu.usb.serialmidi16audio=Serial + MIDIx16 + Audio
-#teensy4b1.menu.usb.serialmidi16audio.build.usbtype=USB_MIDI16_AUDIO_SERIAL
-#teensy4b1.menu.usb.mtp=MTP Disk (Experimental)
-#teensy4b1.menu.usb.mtp.build.usbtype=USB_MTPDISK
-#teensy4b1.menu.usb.mtp.fake_serial=teensy_gateway
-#teensy4b1.menu.usb.rawhid=Raw HID
-#teensy4b1.menu.usb.rawhid.build.usbtype=USB_RAWHID
-#teensy4b1.menu.usb.rawhid.fake_serial=teensy_gateway
-#teensy4b1.menu.usb.flightsim=Flight Sim Controls
-#teensy4b1.menu.usb.flightsim.build.usbtype=USB_FLIGHTSIM
-#teensy4b1.menu.usb.flightsim.fake_serial=teensy_gateway
-#teensy4b1.menu.usb.flightsimjoystick=Flight Sim Controls + Joystick
-#teensy4b1.menu.usb.flightsimjoystick.build.usbtype=USB_FLIGHTSIM_JOYSTICK
-#teensy4b1.menu.usb.flightsimjoystick.fake_serial=teensy_gateway
-#teensy4b1.menu.usb.disable=No USB
-#teensy4b1.menu.usb.disable.build.usbtype=USB_DISABLED
-#
-#teensy4b1.menu.opt.o2std=Faster
-#teensy4b1.menu.opt.o2std.build.flags.optimize=-O2
-#teensy4b1.menu.opt.o2std.build.flags.ldspecs=
-#teensy4b1.menu.opt.o2lto=Faster with LTO
-#teensy4b1.menu.opt.o2lto.build.flags.optimize=-O2 -flto -fno-fat-lto-objects
-#teensy4b1.menu.opt.o2lto.build.flags.ldspecs=-fuse-linker-plugin
-#teensy4b1.menu.opt.o1std=Fast
-#teensy4b1.menu.opt.o1std.build.flags.optimize=-O1
-#teensy4b1.menu.opt.o1std.build.flags.ldspecs=
-#teensy4b1.menu.opt.o1lto=Fast with LTO
-#teensy4b1.menu.opt.o1lto.build.flags.optimize=-O1 -flto -fno-fat-lto-objects
-#teensy4b1.menu.opt.o1lto.build.flags.ldspecs=-fuse-linker-plugin
-#teensy4b1.menu.opt.o3std=Fastest
-#teensy4b1.menu.opt.o3std.build.flags.optimize=-O3
-#teensy4b1.menu.opt.o3std.build.flags.ldspecs=
-#teensy4b1.menu.opt.o3purestd=Fastest + pure-code
-#teensy4b1.menu.opt.o3purestd.build.flags.optimize=-O3 -mpure-code -D__PURE_CODE__
-#teensy4b1.menu.opt.o3purestd.build.flags.ldspecs=
-#teensy4b1.menu.opt.o3lto=Fastest with LTO
-#teensy4b1.menu.opt.o3lto.build.flags.optimize=-O3 -flto -fno-fat-lto-objects
-#teensy4b1.menu.opt.o3lto.build.flags.ldspecs=-fuse-linker-plugin
-#teensy4b1.menu.opt.o3purelto=Fastest + pure-code with LTO
-#teensy4b1.menu.opt.o3purelto.build.flags.optimize=-O3 -mpure-code -D__PURE_CODE__ -flto -fno-fat-lto-objects
-#teensy4b1.menu.opt.o3purelto.build.flags.ldspecs=-fuse-linker-plugin
-#teensy4b1.menu.opt.ogstd=Debug
-#teensy4b1.menu.opt.ogstd.build.flags.optimize=-Og
-#teensy4b1.menu.opt.ogstd.build.flags.ldspecs=
-#teensy4b1.menu.opt.oglto=Debug with LTO
-#teensy4b1.menu.opt.oglto.build.flags.optimize=-Og -flto -fno-fat-lto-objects
-#teensy4b1.menu.opt.oglto.build.flags.ldspecs=-fuse-linker-plugin
-#teensy4b1.menu.opt.osstd=Smallest Code
-#teensy4b1.menu.opt.osstd.build.flags.optimize=-Os --specs=nano.specs
-#teensy4b1.menu.opt.osstd.build.flags.ldspecs=
-#teensy4b1.menu.opt.oslto=Smallest Code with LTO
-#teensy4b1.menu.opt.oslto.build.flags.optimize=-Os -flto -fno-fat-lto-objects --specs=nano.specs
-#teensy4b1.menu.opt.oslto.build.flags.ldspecs=-fuse-linker-plugin
-#
-#teensy4b1.menu.keys.en-us=US English
-#teensy4b1.menu.keys.en-us.build.keylayout=US_ENGLISH
-#teensy4b1.menu.keys.fr-ca=Canadian French
-#teensy4b1.menu.keys.fr-ca.build.keylayout=CANADIAN_FRENCH
-#teensy4b1.menu.keys.xx-ca=Canadian Multilingual
-#teensy4b1.menu.keys.xx-ca.build.keylayout=CANADIAN_MULTILINGUAL
-#teensy4b1.menu.keys.cz-cz=Czech
-#teensy4b1.menu.keys.cz-cz.build.keylayout=CZECH
-#teensy4b1.menu.keys.da-da=Danish
-#teensy4b1.menu.keys.da-da.build.keylayout=DANISH
-#teensy4b1.menu.keys.fi-fi=Finnish
-#teensy4b1.menu.keys.fi-fi.build.keylayout=FINNISH
-#teensy4b1.menu.keys.fr-fr=French
-#teensy4b1.menu.keys.fr-fr.build.keylayout=FRENCH
-#teensy4b1.menu.keys.fr-be=French Belgian
-#teensy4b1.menu.keys.fr-be.build.keylayout=FRENCH_BELGIAN
-#teensy4b1.menu.keys.fr-ch=French Swiss
-#teensy4b1.menu.keys.fr-ch.build.keylayout=FRENCH_SWISS
-#teensy4b1.menu.keys.de-de=German
-#teensy4b1.menu.keys.de-de.build.keylayout=GERMAN
-#teensy4b1.menu.keys.de-dm=German (Mac)
-#teensy4b1.menu.keys.de-dm.build.keylayout=GERMAN_MAC
-#teensy4b1.menu.keys.de-ch=German Swiss
-#teensy4b1.menu.keys.de-ch.build.keylayout=GERMAN_SWISS
-#teensy4b1.menu.keys.is-is=Icelandic
-#teensy4b1.menu.keys.is-is.build.keylayout=ICELANDIC
-#teensy4b1.menu.keys.en-ie=Irish
-#teensy4b1.menu.keys.en-ie.build.keylayout=IRISH
-#teensy4b1.menu.keys.it-it=Italian
-#teensy4b1.menu.keys.it-it.build.keylayout=ITALIAN
-#teensy4b1.menu.keys.no-no=Norwegian
-#teensy4b1.menu.keys.no-no.build.keylayout=NORWEGIAN
-#teensy4b1.menu.keys.pt-pt=Portuguese
-#teensy4b1.menu.keys.pt-pt.build.keylayout=PORTUGUESE
-#teensy4b1.menu.keys.pt-br=Portuguese Brazilian
-#teensy4b1.menu.keys.pt-br.build.keylayout=PORTUGUESE_BRAZILIAN
-#teensy4b1.menu.keys.rs-rs=Serbian (Latin Only)
-#teensy4b1.menu.keys.rs-rs.build.keylayout=SERBIAN_LATIN_ONLY
-#teensy4b1.menu.keys.es-es=Spanish
-#teensy4b1.menu.keys.es-es.build.keylayout=SPANISH
-#teensy4b1.menu.keys.es-mx=Spanish Latin America
-#teensy4b1.menu.keys.es-mx.build.keylayout=SPANISH_LATIN_AMERICA
-#teensy4b1.menu.keys.sv-se=Swedish
-#teensy4b1.menu.keys.sv-se.build.keylayout=SWEDISH
-#teensy4b1.menu.keys.tr-tr=Turkish (partial)
-#teensy4b1.menu.keys.tr-tr.build.keylayout=TURKISH
-#teensy4b1.menu.keys.en-gb=United Kingdom
-#teensy4b1.menu.keys.en-gb.build.keylayout=UNITED_KINGDOM
-#teensy4b1.menu.keys.usint=US International
-#teensy4b1.menu.keys.usint.build.keylayout=US_INTERNATIONAL
-
-
-
-
 teensy36.name=Teensy 3.6
 teensy36.upload.maximum_size=1048576
 teensy36.upload.maximum_data_size=262144
@@ -368,7 +218,7 @@ teensy36.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdl
 teensy36.build.flags.dep=-MMD
 teensy36.build.flags.optimize=-Os
 teensy36.build.flags.cpu=-mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fsingle-precision-constant
-teensy36.build.flags.defs=-D__MK66FX1M0__ -DTEENSYDUINO=147
+teensy36.build.flags.defs=-D__MK66FX1M0__ -DTEENSYDUINO=148
 teensy36.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++14 -Wno-error=narrowing -fno-rtti
 teensy36.build.flags.c=
 teensy36.build.flags.S=-x assembler-with-cpp
@@ -448,8 +298,8 @@ teensy36.menu.speed.2=2 MHz (No USB)
 teensy36.menu.speed.192=192 MHz (overclock)
 teensy36.menu.speed.216=216 MHz (overclock)
 teensy36.menu.speed.240=240 MHz (overclock)
-#teensy36.menu.speed.256=256 MHz (overclock)
-#teensy36.menu.speed.256.build.fcpu=256000000
+teensy36.menu.speed.256=256 MHz (overclock)
+teensy36.menu.speed.256.build.fcpu=256000000
 teensy36.menu.speed.240.build.fcpu=240000000
 teensy36.menu.speed.216.build.fcpu=216000000
 teensy36.menu.speed.192.build.fcpu=192000000
@@ -576,7 +426,7 @@ teensy35.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdl
 teensy35.build.flags.dep=-MMD
 teensy35.build.flags.optimize=-Os
 teensy35.build.flags.cpu=-mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fsingle-precision-constant
-teensy35.build.flags.defs=-D__MK64FX512__ -DTEENSYDUINO=147
+teensy35.build.flags.defs=-D__MK64FX512__ -DTEENSYDUINO=148
 teensy35.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++14 -Wno-error=narrowing -fno-rtti
 teensy35.build.flags.c=
 teensy35.build.flags.S=-x assembler-with-cpp
@@ -774,7 +624,7 @@ teensy31.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdl
 teensy31.build.flags.dep=-MMD
 teensy31.build.flags.optimize=-Os
 teensy31.build.flags.cpu=-mthumb -mcpu=cortex-m4 -fsingle-precision-constant
-teensy31.build.flags.defs=-D__MK20DX256__ -DTEENSYDUINO=147
+teensy31.build.flags.defs=-D__MK20DX256__ -DTEENSYDUINO=148
 teensy31.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++14 -Wno-error=narrowing -fno-rtti
 teensy31.build.flags.c=
 teensy31.build.flags.S=-x assembler-with-cpp
@@ -983,7 +833,7 @@ teensy30.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdl
 teensy30.build.flags.dep=-MMD
 teensy30.build.flags.optimize=-Os
 teensy30.build.flags.cpu=-mthumb -mcpu=cortex-m4 -fsingle-precision-constant
-teensy30.build.flags.defs=-D__MK20DX128__ -DTEENSYDUINO=147
+teensy30.build.flags.defs=-D__MK20DX128__ -DTEENSYDUINO=148
 teensy30.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++14 -Wno-error=narrowing -fno-rtti
 teensy30.build.flags.c=
 teensy30.build.flags.S=-x assembler-with-cpp
@@ -1142,7 +992,7 @@ teensyLC.build.command.size=arm-none-eabi-size
 teensyLC.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdlib
 teensyLC.build.flags.dep=-MMD
 teensyLC.build.flags.cpu=-mthumb -mcpu=cortex-m0plus -fsingle-precision-constant
-teensyLC.build.flags.defs=-D__MKL26Z64__ -DTEENSYDUINO=147
+teensyLC.build.flags.defs=-D__MKL26Z64__ -DTEENSYDUINO=148
 teensyLC.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++14 -Wno-error=narrowing -fno-rtti
 teensyLC.build.flags.c=
 teensyLC.build.flags.S=-x assembler-with-cpp
@@ -1296,7 +1146,7 @@ teensypp2.build.flags.common=-g -Wall -ffunction-sections -fdata-sections
 teensypp2.build.flags.dep=-MMD
 teensypp2.build.flags.optimize=-Os
 teensypp2.build.flags.cpu=-mmcu=at90usb1286
-teensypp2.build.flags.defs=-DTEENSYDUINO=147 -DARDUINO_ARCH_AVR
+teensypp2.build.flags.defs=-DTEENSYDUINO=148 -DARDUINO_ARCH_AVR
 teensypp2.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++11
 teensypp2.build.flags.c=
 teensypp2.build.flags.S=-x assembler-with-cpp
@@ -1413,7 +1263,7 @@ teensy2.build.flags.common=-g -Wall -ffunction-sections -fdata-sections
 teensy2.build.flags.dep=-MMD
 teensy2.build.flags.optimize=-Os
 teensy2.build.flags.cpu=-mmcu=atmega32u4
-teensy2.build.flags.defs=-DTEENSYDUINO=147 -DARDUINO_ARCH_AVR
+teensy2.build.flags.defs=-DTEENSYDUINO=148 -DARDUINO_ARCH_AVR
 teensy2.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++11
 teensy2.build.flags.c=
 teensy2.build.flags.S=-x assembler-with-cpp
