@@ -5,7 +5,8 @@ menu.keys=Keyboard Layout
 
 teensy40.name=Teensy 4.0
 teensy40.upload.maximum_size=2031616
-teensy40.upload.maximum_data_size=1048576
+teensy40.upload.maximum_data_size=524288
+#teensy40.upload.maximum_data_size=1048576
 teensy40.upload.tool=teensyloader
 teensy40.upload.protocol=halfkay
 teensy40.build.board=TEENSY40
@@ -24,45 +25,44 @@ teensy40.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdl
 teensy40.build.flags.dep=-MMD
 teensy40.build.flags.optimize=-Os
 teensy40.build.flags.cpu=-mthumb -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16
-teensy40.build.flags.defs=-D__IMXRT1062__ -DTEENSYDUINO=148
+teensy40.build.flags.defs=-D__IMXRT1062__ -DTEENSYDUINO=149
 teensy40.build.flags.cpp=-std=gnu++14 -fno-exceptions -fpermissive -fno-rtti -fno-threadsafe-statics -felide-constructors -Wno-error=narrowing
 teensy40.build.flags.c=
 teensy40.build.flags.S=-x assembler-with-cpp
 teensy40.build.flags.ld=-Wl,--gc-sections,--relax "-T{build.core.path}/imxrt1062.ld"
 teensy40.build.flags.libs=-larm_cortexM7lfsp_math -lm -lstdc++
-#teensy40.build.fcpu=600000000
 teensy40.serial.restart_cmd=false
 teensy40.menu.usb.serial=Serial
 teensy40.menu.usb.serial.build.usbtype=USB_SERIAL
-#teensy40.menu.usb.keyboard=Keyboard
-#teensy40.menu.usb.keyboard.build.usbtype=USB_KEYBOARDONLY
-#teensy40.menu.usb.keyboard.fake_serial=teensy_gateway
-#teensy40.menu.usb.touch=Keyboard + Touch Screen
-#teensy40.menu.usb.touch.build.usbtype=USB_TOUCHSCREEN
-#teensy40.menu.usb.touch.fake_serial=teensy_gateway
-#teensy40.menu.usb.hidtouch=Keyboard + Mouse + Touch Screen
-#teensy40.menu.usb.hidtouch.build.usbtype=USB_HID_TOUCHSCREEN
-#teensy40.menu.usb.hidtouch.fake_serial=teensy_gateway
-#teensy40.menu.usb.hid=Keyboard + Mouse + Joystick
-#teensy40.menu.usb.hid.build.usbtype=USB_HID
-#teensy40.menu.usb.hid.fake_serial=teensy_gateway
-#teensy40.menu.usb.serialhid=Serial + Keyboard + Mouse + Joystick
-#teensy40.menu.usb.serialhid.build.usbtype=USB_SERIAL_HID
-#teensy40.menu.usb.midi=MIDI
-#teensy40.menu.usb.midi.build.usbtype=USB_MIDI
-#teensy40.menu.usb.midi.fake_serial=teensy_gateway
-#teensy40.menu.usb.midi4=MIDIx4
-#teensy40.menu.usb.midi4.build.usbtype=USB_MIDI4
-#teensy40.menu.usb.midi4.fake_serial=teensy_gateway
-#teensy40.menu.usb.midi16=MIDIx16
-#teensy40.menu.usb.midi16.build.usbtype=USB_MIDI16
-#teensy40.menu.usb.midi16.fake_serial=teensy_gateway
-#teensy40.menu.usb.serialmidi=Serial + MIDI
-#teensy40.menu.usb.serialmidi.build.usbtype=USB_MIDI_SERIAL
-#teensy40.menu.usb.serialmidi4=Serial + MIDIx4
-#teensy40.menu.usb.serialmidi4.build.usbtype=USB_MIDI4_SERIAL
-#teensy40.menu.usb.serialmidi16=Serial + MIDIx16
-#teensy40.menu.usb.serialmidi16.build.usbtype=USB_MIDI16_SERIAL
+teensy40.menu.usb.keyboard=Keyboard
+teensy40.menu.usb.keyboard.build.usbtype=USB_KEYBOARDONLY
+teensy40.menu.usb.keyboard.fake_serial=teensy_gateway
+teensy40.menu.usb.touch=Keyboard + Touch Screen
+teensy40.menu.usb.touch.build.usbtype=USB_TOUCHSCREEN
+teensy40.menu.usb.touch.fake_serial=teensy_gateway
+teensy40.menu.usb.hidtouch=Keyboard + Mouse + Touch Screen
+teensy40.menu.usb.hidtouch.build.usbtype=USB_HID_TOUCHSCREEN
+teensy40.menu.usb.hidtouch.fake_serial=teensy_gateway
+teensy40.menu.usb.hid=Keyboard + Mouse + Joystick
+teensy40.menu.usb.hid.build.usbtype=USB_HID
+teensy40.menu.usb.hid.fake_serial=teensy_gateway
+teensy40.menu.usb.serialhid=Serial + Keyboard + Mouse + Joystick
+teensy40.menu.usb.serialhid.build.usbtype=USB_SERIAL_HID
+teensy40.menu.usb.midi=MIDI
+teensy40.menu.usb.midi.build.usbtype=USB_MIDI
+teensy40.menu.usb.midi.fake_serial=teensy_gateway
+teensy40.menu.usb.midi4=MIDIx4
+teensy40.menu.usb.midi4.build.usbtype=USB_MIDI4
+teensy40.menu.usb.midi4.fake_serial=teensy_gateway
+teensy40.menu.usb.midi16=MIDIx16
+teensy40.menu.usb.midi16.build.usbtype=USB_MIDI16
+teensy40.menu.usb.midi16.fake_serial=teensy_gateway
+teensy40.menu.usb.serialmidi=Serial + MIDI
+teensy40.menu.usb.serialmidi.build.usbtype=USB_MIDI_SERIAL
+teensy40.menu.usb.serialmidi4=Serial + MIDIx4
+teensy40.menu.usb.serialmidi4.build.usbtype=USB_MIDI4_SERIAL
+teensy40.menu.usb.serialmidi16=Serial + MIDIx16
+teensy40.menu.usb.serialmidi16.build.usbtype=USB_MIDI16_SERIAL
 #teensy40.menu.usb.audio=Audio
 #teensy40.menu.usb.audio.build.usbtype=USB_AUDIO
 #teensy40.menu.usb.audio.fake_serial=teensy_gateway
@@ -73,9 +73,9 @@ teensy40.menu.usb.serial.build.usbtype=USB_SERIAL
 #teensy40.menu.usb.mtp=MTP Disk (Experimental)
 #teensy40.menu.usb.mtp.build.usbtype=USB_MTPDISK
 #teensy40.menu.usb.mtp.fake_serial=teensy_gateway
-#teensy40.menu.usb.rawhid=Raw HID
-#teensy40.menu.usb.rawhid.build.usbtype=USB_RAWHID
-#teensy40.menu.usb.rawhid.fake_serial=teensy_gateway
+teensy40.menu.usb.rawhid=Raw HID
+teensy40.menu.usb.rawhid.build.usbtype=USB_RAWHID
+teensy40.menu.usb.rawhid.fake_serial=teensy_gateway
 #teensy40.menu.usb.flightsim=Flight Sim Controls
 #teensy40.menu.usb.flightsim.build.usbtype=USB_FLIGHTSIM
 #teensy40.menu.usb.flightsim.fake_serial=teensy_gateway
@@ -218,7 +218,7 @@ teensy36.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdl
 teensy36.build.flags.dep=-MMD
 teensy36.build.flags.optimize=-Os
 teensy36.build.flags.cpu=-mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fsingle-precision-constant
-teensy36.build.flags.defs=-D__MK66FX1M0__ -DTEENSYDUINO=148
+teensy36.build.flags.defs=-D__MK66FX1M0__ -DTEENSYDUINO=149
 teensy36.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++14 -Wno-error=narrowing -fno-rtti
 teensy36.build.flags.c=
 teensy36.build.flags.S=-x assembler-with-cpp
@@ -426,7 +426,7 @@ teensy35.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdl
 teensy35.build.flags.dep=-MMD
 teensy35.build.flags.optimize=-Os
 teensy35.build.flags.cpu=-mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fsingle-precision-constant
-teensy35.build.flags.defs=-D__MK64FX512__ -DTEENSYDUINO=148
+teensy35.build.flags.defs=-D__MK64FX512__ -DTEENSYDUINO=149
 teensy35.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++14 -Wno-error=narrowing -fno-rtti
 teensy35.build.flags.c=
 teensy35.build.flags.S=-x assembler-with-cpp
@@ -624,7 +624,7 @@ teensy31.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdl
 teensy31.build.flags.dep=-MMD
 teensy31.build.flags.optimize=-Os
 teensy31.build.flags.cpu=-mthumb -mcpu=cortex-m4 -fsingle-precision-constant
-teensy31.build.flags.defs=-D__MK20DX256__ -DTEENSYDUINO=148
+teensy31.build.flags.defs=-D__MK20DX256__ -DTEENSYDUINO=149
 teensy31.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++14 -Wno-error=narrowing -fno-rtti
 teensy31.build.flags.c=
 teensy31.build.flags.S=-x assembler-with-cpp
@@ -833,7 +833,7 @@ teensy30.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdl
 teensy30.build.flags.dep=-MMD
 teensy30.build.flags.optimize=-Os
 teensy30.build.flags.cpu=-mthumb -mcpu=cortex-m4 -fsingle-precision-constant
-teensy30.build.flags.defs=-D__MK20DX128__ -DTEENSYDUINO=148
+teensy30.build.flags.defs=-D__MK20DX128__ -DTEENSYDUINO=149
 teensy30.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++14 -Wno-error=narrowing -fno-rtti
 teensy30.build.flags.c=
 teensy30.build.flags.S=-x assembler-with-cpp
@@ -992,7 +992,7 @@ teensyLC.build.command.size=arm-none-eabi-size
 teensyLC.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdlib
 teensyLC.build.flags.dep=-MMD
 teensyLC.build.flags.cpu=-mthumb -mcpu=cortex-m0plus -fsingle-precision-constant
-teensyLC.build.flags.defs=-D__MKL26Z64__ -DTEENSYDUINO=148
+teensyLC.build.flags.defs=-D__MKL26Z64__ -DTEENSYDUINO=149
 teensyLC.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++14 -Wno-error=narrowing -fno-rtti
 teensyLC.build.flags.c=
 teensyLC.build.flags.S=-x assembler-with-cpp
@@ -1146,7 +1146,7 @@ teensypp2.build.flags.common=-g -Wall -ffunction-sections -fdata-sections
 teensypp2.build.flags.dep=-MMD
 teensypp2.build.flags.optimize=-Os
 teensypp2.build.flags.cpu=-mmcu=at90usb1286
-teensypp2.build.flags.defs=-DTEENSYDUINO=148 -DARDUINO_ARCH_AVR
+teensypp2.build.flags.defs=-DTEENSYDUINO=149 -DARDUINO_ARCH_AVR
 teensypp2.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++11
 teensypp2.build.flags.c=
 teensypp2.build.flags.S=-x assembler-with-cpp
@@ -1263,7 +1263,7 @@ teensy2.build.flags.common=-g -Wall -ffunction-sections -fdata-sections
 teensy2.build.flags.dep=-MMD
 teensy2.build.flags.optimize=-Os
 teensy2.build.flags.cpu=-mmcu=atmega32u4
-teensy2.build.flags.defs=-DTEENSYDUINO=148 -DARDUINO_ARCH_AVR
+teensy2.build.flags.defs=-DTEENSYDUINO=149 -DARDUINO_ARCH_AVR
 teensy2.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++11
 teensy2.build.flags.c=
 teensy2.build.flags.S=-x assembler-with-cpp
