@@ -4,10 +4,8 @@ menu.opt=Optimize
 menu.keys=Keyboard Layout
 
 
-
-
 #teensy41.name=Teensy 4.1
-#teensy41.upload.maximum_size=2031616
+#teensy41.upload.maximum_size=8126464
 #teensy41.upload.maximum_data_size=524288
 ##teensy41.upload.maximum_data_size=1048576
 #teensy41.upload.tool=teensyloader
@@ -28,7 +26,7 @@ menu.keys=Keyboard Layout
 #teensy41.build.flags.dep=-MMD
 #teensy41.build.flags.optimize=-Os
 #teensy41.build.flags.cpu=-mthumb -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16
-#teensy41.build.flags.defs=-D__IMXRT1062__ -DTEENSYDUINO=150
+#teensy41.build.flags.defs=-D__IMXRT1062__ -DTEENSYDUINO=151
 #teensy41.build.flags.cpp=-std=gnu++14 -fno-exceptions -fpermissive -fno-rtti -fno-threadsafe-statics -felide-constructors -Wno-error=narrowing
 #teensy41.build.flags.c=
 #teensy41.build.flags.S=-x assembler-with-cpp
@@ -79,15 +77,15 @@ menu.keys=Keyboard Layout
 #teensy41.menu.usb.rawhid=Raw HID
 #teensy41.menu.usb.rawhid.build.usbtype=USB_RAWHID
 #teensy41.menu.usb.rawhid.fake_serial=teensy_gateway
-##teensy41.menu.usb.flightsim=Flight Sim Controls
-##teensy41.menu.usb.flightsim.build.usbtype=USB_FLIGHTSIM
-##teensy41.menu.usb.flightsim.fake_serial=teensy_gateway
-##teensy41.menu.usb.flightsimjoystick=Flight Sim Controls + Joystick
-##teensy41.menu.usb.flightsimjoystick.build.usbtype=USB_FLIGHTSIM_JOYSTICK
-##teensy41.menu.usb.flightsimjoystick.fake_serial=teensy_gateway
+#teensy41.menu.usb.flightsim=Flight Sim Controls
+#teensy41.menu.usb.flightsim.build.usbtype=USB_FLIGHTSIM
+#teensy41.menu.usb.flightsim.fake_serial=teensy_gateway
+#teensy41.menu.usb.flightsimjoystick=Flight Sim Controls + Joystick
+#teensy41.menu.usb.flightsimjoystick.build.usbtype=USB_FLIGHTSIM_JOYSTICK
+#teensy41.menu.usb.flightsimjoystick.fake_serial=teensy_gateway
 ##teensy41.menu.usb.disable=No USB
 ##teensy41.menu.usb.disable.build.usbtype=USB_DISABLED
-#
+
 #teensy41.menu.speed.600=600 MHz
 #teensy41.menu.speed.528=528 MHz
 #teensy41.menu.speed.450=450 MHz
@@ -110,7 +108,7 @@ menu.keys=Keyboard Layout
 #teensy41.menu.speed.396.build.fcpu=396000000
 #teensy41.menu.speed.150.build.fcpu=150000000
 #teensy41.menu.speed.24.build.fcpu=24000000
-#
+
 #teensy41.menu.opt.o2std=Faster
 #teensy41.menu.opt.o2std.build.flags.optimize=-O2
 #teensy41.menu.opt.o2std.build.flags.ldspecs=
@@ -147,7 +145,7 @@ menu.keys=Keyboard Layout
 ##teensy41.menu.opt.oslto=Smallest Code with LTO
 ##teensy41.menu.opt.oslto.build.flags.optimize=-Os -flto -fno-fat-lto-objects --specs=nano.specs
 ##teensy41.menu.opt.oslto.build.flags.ldspecs=-fuse-linker-plugin
-#
+
 #teensy41.menu.keys.en-us=US English
 #teensy41.menu.keys.en-us.build.keylayout=US_ENGLISH
 #teensy41.menu.keys.fr-ca=Canadian French
@@ -223,7 +221,7 @@ teensy40.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdl
 teensy40.build.flags.dep=-MMD
 teensy40.build.flags.optimize=-Os
 teensy40.build.flags.cpu=-mthumb -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16
-teensy40.build.flags.defs=-D__IMXRT1062__ -DTEENSYDUINO=150
+teensy40.build.flags.defs=-D__IMXRT1062__ -DTEENSYDUINO=151
 teensy40.build.flags.cpp=-std=gnu++14 -fno-exceptions -fpermissive -fno-rtti -fno-threadsafe-statics -felide-constructors -Wno-error=narrowing
 teensy40.build.flags.c=
 teensy40.build.flags.S=-x assembler-with-cpp
@@ -274,12 +272,12 @@ teensy40.menu.usb.serialmidi16.build.usbtype=USB_MIDI16_SERIAL
 teensy40.menu.usb.rawhid=Raw HID
 teensy40.menu.usb.rawhid.build.usbtype=USB_RAWHID
 teensy40.menu.usb.rawhid.fake_serial=teensy_gateway
-#teensy40.menu.usb.flightsim=Flight Sim Controls
-#teensy40.menu.usb.flightsim.build.usbtype=USB_FLIGHTSIM
-#teensy40.menu.usb.flightsim.fake_serial=teensy_gateway
-#teensy40.menu.usb.flightsimjoystick=Flight Sim Controls + Joystick
-#teensy40.menu.usb.flightsimjoystick.build.usbtype=USB_FLIGHTSIM_JOYSTICK
-#teensy40.menu.usb.flightsimjoystick.fake_serial=teensy_gateway
+teensy40.menu.usb.flightsim=Flight Sim Controls
+teensy40.menu.usb.flightsim.build.usbtype=USB_FLIGHTSIM
+teensy40.menu.usb.flightsim.fake_serial=teensy_gateway
+teensy40.menu.usb.flightsimjoystick=Flight Sim Controls + Joystick
+teensy40.menu.usb.flightsimjoystick.build.usbtype=USB_FLIGHTSIM_JOYSTICK
+teensy40.menu.usb.flightsimjoystick.fake_serial=teensy_gateway
 #teensy40.menu.usb.disable=No USB
 #teensy40.menu.usb.disable.build.usbtype=USB_DISABLED
 
@@ -416,7 +414,7 @@ teensy36.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdl
 teensy36.build.flags.dep=-MMD
 teensy36.build.flags.optimize=-Os
 teensy36.build.flags.cpu=-mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fsingle-precision-constant
-teensy36.build.flags.defs=-D__MK66FX1M0__ -DTEENSYDUINO=150
+teensy36.build.flags.defs=-D__MK66FX1M0__ -DTEENSYDUINO=151
 teensy36.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++14 -Wno-error=narrowing -fno-rtti
 teensy36.build.flags.c=
 teensy36.build.flags.S=-x assembler-with-cpp
@@ -624,7 +622,7 @@ teensy35.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdl
 teensy35.build.flags.dep=-MMD
 teensy35.build.flags.optimize=-Os
 teensy35.build.flags.cpu=-mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -fsingle-precision-constant
-teensy35.build.flags.defs=-D__MK64FX512__ -DTEENSYDUINO=150
+teensy35.build.flags.defs=-D__MK64FX512__ -DTEENSYDUINO=151
 teensy35.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++14 -Wno-error=narrowing -fno-rtti
 teensy35.build.flags.c=
 teensy35.build.flags.S=-x assembler-with-cpp
@@ -822,7 +820,7 @@ teensy31.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdl
 teensy31.build.flags.dep=-MMD
 teensy31.build.flags.optimize=-Os
 teensy31.build.flags.cpu=-mthumb -mcpu=cortex-m4 -fsingle-precision-constant
-teensy31.build.flags.defs=-D__MK20DX256__ -DTEENSYDUINO=150
+teensy31.build.flags.defs=-D__MK20DX256__ -DTEENSYDUINO=151
 teensy31.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++14 -Wno-error=narrowing -fno-rtti
 teensy31.build.flags.c=
 teensy31.build.flags.S=-x assembler-with-cpp
@@ -1031,7 +1029,7 @@ teensy30.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdl
 teensy30.build.flags.dep=-MMD
 teensy30.build.flags.optimize=-Os
 teensy30.build.flags.cpu=-mthumb -mcpu=cortex-m4 -fsingle-precision-constant
-teensy30.build.flags.defs=-D__MK20DX128__ -DTEENSYDUINO=150
+teensy30.build.flags.defs=-D__MK20DX128__ -DTEENSYDUINO=151
 teensy30.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++14 -Wno-error=narrowing -fno-rtti
 teensy30.build.flags.c=
 teensy30.build.flags.S=-x assembler-with-cpp
@@ -1190,7 +1188,7 @@ teensyLC.build.command.size=arm-none-eabi-size
 teensyLC.build.flags.common=-g -Wall -ffunction-sections -fdata-sections -nostdlib
 teensyLC.build.flags.dep=-MMD
 teensyLC.build.flags.cpu=-mthumb -mcpu=cortex-m0plus -fsingle-precision-constant
-teensyLC.build.flags.defs=-D__MKL26Z64__ -DTEENSYDUINO=150
+teensyLC.build.flags.defs=-D__MKL26Z64__ -DTEENSYDUINO=151
 teensyLC.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++14 -Wno-error=narrowing -fno-rtti
 teensyLC.build.flags.c=
 teensyLC.build.flags.S=-x assembler-with-cpp
@@ -1344,7 +1342,7 @@ teensypp2.build.flags.common=-g -Wall -ffunction-sections -fdata-sections
 teensypp2.build.flags.dep=-MMD
 teensypp2.build.flags.optimize=-Os
 teensypp2.build.flags.cpu=-mmcu=at90usb1286
-teensypp2.build.flags.defs=-DTEENSYDUINO=150 -DARDUINO_ARCH_AVR
+teensypp2.build.flags.defs=-DTEENSYDUINO=151 -DARDUINO_ARCH_AVR
 teensypp2.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++11
 teensypp2.build.flags.c=
 teensypp2.build.flags.S=-x assembler-with-cpp
@@ -1461,7 +1459,7 @@ teensy2.build.flags.common=-g -Wall -ffunction-sections -fdata-sections
 teensy2.build.flags.dep=-MMD
 teensy2.build.flags.optimize=-Os
 teensy2.build.flags.cpu=-mmcu=atmega32u4
-teensy2.build.flags.defs=-DTEENSYDUINO=150 -DARDUINO_ARCH_AVR
+teensy2.build.flags.defs=-DTEENSYDUINO=151 -DARDUINO_ARCH_AVR
 teensy2.build.flags.cpp=-fno-exceptions -fpermissive -felide-constructors -std=gnu++11
 teensy2.build.flags.c=
 teensy2.build.flags.S=-x assembler-with-cpp
