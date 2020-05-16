@@ -2,7 +2,7 @@ language: C
 env:
   global:
     - IDE_VERSION=1.8.12
-    - TEENSY_VERSION=151
+    - TEENSY_VERSION=152
     - IDE_LOCATION=/usr/local/share/arduino
     - BOARDS_DESTINATION=$IDE_LOCATION/hardware
 
