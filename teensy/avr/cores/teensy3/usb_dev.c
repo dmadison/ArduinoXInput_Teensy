@@ -47,15 +47,19 @@
 
 // This code has a known bug with compiled with -O2 optimization on gcc 5.4.1
 // https://forum.pjrc.com/threads/53574-Teensyduino-1-43-Beta-2?p=186177&viewfull=1#post186177
+#if 0
 #if defined(__MKL26Z64__)
 #pragma GCC optimize ("Os")
 #else
 #pragma GCC optimize ("O3")
 #endif
+#endif
+// adding volatile to bdt_t fully solves the bug, right?
+// https://forum.pjrc.com/threads/67081?p=278849&viewfull=1#post278849
 
 // buffer descriptor table
 
-typedef struct {
+typedef volatile struct {
 	uint32_t desc;
 	void * addr;
 } bdt_t;
@@ -652,9 +656,12 @@ static void usb_control(uint32_t stat)
 		}
 #endif
 #ifdef SEREMU_INTERFACE
-		if (setup.word1 == 0x03000921 && setup.word2 == ((4<<16)|SEREMU_INTERFACE)
-		  && buf[0] == 0xA9 && buf[1] == 0x45 && buf[2] == 0xC2 && buf[3] == 0x6B) {
-			usb_reboot_timer = 5;
+		if (setup.word1 == 0x03000921 && setup.word2 == ((4<<16)|SEREMU_INTERFACE)) {
+			if (buf[0] == 0xA9 && buf[1] == 0x45 && buf[2] == 0xC2 && buf[3] == 0x6B) {
+				usb_reboot_timer = 5;
+			} else {
+				usb_seremu_online = 1;
+			}
 			endpoint0_transmit(NULL, 0);
 		}
 #endif
