@@ -6,7 +6,7 @@ This is meant to be used in conjunction with the [ArduinoXInput library](https:/
  
 ## Installation
 
-You must have both [Arduino](https://www.arduino.cc/en/main/software) and [Teensyduino](https://www.pjrc.com/teensy/td_download.html) installed before proceeding. Double-check that your installed Teensyduino version matches the files provided in this repository. This repository is currently using version [**1.55**](https://www.pjrc.com/teensy/td_155). If you don't know your Teensyduino version, compile a blank sketch with a Teensy board selected and the Teensy Loader will open. In the Teensy Loader window select `Help -> About` and it will tell you the version number. If your version does not match you will have to reinstall or update the Teensyduino software.
+You must have both [Arduino](https://www.arduino.cc/en/main/software) and [Teensyduino](https://www.pjrc.com/teensy/td_download.html) installed before proceeding. Double-check that your installed Teensyduino version matches the files provided in this repository. This repository is currently using version [**1.56**](https://www.pjrc.com/teensy/td_156). If you don't know your Teensyduino version, compile a blank sketch with a Teensy board selected and the Teensy Loader will open. In the Teensy Loader window select `Help -> About` and it will tell you the version number. If your version does not match you will have to reinstall or update the Teensyduino software.
 
 Navigate to your Arduino installation directory and open up the 'hardware' folder. It is recommended that you make a backup of this folder before proceeding in case something goes wrong or if you want to revert the installation.
 
