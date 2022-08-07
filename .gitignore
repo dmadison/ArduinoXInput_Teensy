@@ -98,3 +98,11 @@ teensy/**
 !teensy/avr/cores/teensy3/usb_inst.cpp
 !teensy/avr/cores/teensy3/usb_serial.h
 !teensy/avr/cores/teensy3/WProgram.h
+
+!teensy/avr/cores/teensy4/
+!teensy/avr/cores/teensy4/WProgram.h
+!teensy/avr/cores/teensy4/usb.c
+!teensy/avr/cores/teensy4/usb_desc.c
+!teensy/avr/cores/teensy4/usb_desc.h
+!teensy/avr/cores/teensy4/usb_inst.cpp
+!teensy/avr/cores/teensy4/usb_serial.h
