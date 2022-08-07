@@ -20,6 +20,8 @@ To uninstall, restore your 'teensy' folder from a backup or reinstall Teensyduin
 * [Teensy 3.5](https://www.pjrc.com/store/teensy35.html)
 * [Teensy 3.1](https://www.pjrc.com/store/teensy31.html) / [3.2](https://www.pjrc.com/store/teensy32.html)
 * [Teensy LC](https://www.pjrc.com/teensy/teensyLC.html)
+* [Teensy 4.1](https://www.pjrc.com/store/teensy41.html)
+  * Probably works on the [Teensy 4.0](https://www.pjrc.com/store/teensy40.html) as well, but untested!
 
 ## Limitations
 
