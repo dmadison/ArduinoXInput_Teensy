@@ -33,9 +33,9 @@
 #include "usb_desc.h"
 #include <stdint.h>
 
-#if (defined(CDC_STATUS_INTERFACE) && defined(CDC_DATA_INTERFACE)) || defined(USB_DISABLED)
+#if (defined(CDC_STATUS_INTERFACE) && defined(CDC_DATA_INTERFACE)) || defined(USB_DISABLED) || defined(USB_XINPUT)
 
-#if !defined(USB_DISABLED)
+#if !(defined(USB_DISABLED) || defined(USB_XINPUT))
 
 // C language implementation
 #ifdef __cplusplus

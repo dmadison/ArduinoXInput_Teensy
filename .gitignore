@@ -106,3 +106,5 @@ teensy/**
 !teensy/avr/cores/teensy4/usb_desc.h
 !teensy/avr/cores/teensy4/usb_inst.cpp
 !teensy/avr/cores/teensy4/usb_serial.h
+!teensy/avr/cores/teensy4/usb_xinput.h
+!teensy/avr/cores/teensy4/usb_xinput.c

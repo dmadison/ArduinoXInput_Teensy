@@ -12,6 +12,7 @@
 #include "usb_midi.h"
 #include "usb_audio.h"
 #include "usb_mtp.h"
+#include "usb_xinput.h"
 #include "core_pins.h" // for delay()
 #include "avr/pgmspace.h"
 #include <string.h>
@@ -489,6 +490,9 @@ static void endpoint0_setup(uint64_t setupdata)
 		#endif
 		#if defined(EXPERIMENTAL_INTERFACE)
 		endpoint_queue_head[2].unused1 = (uint32_t)experimental_buffer;
+		#endif
+		#if defined(XINPUT_INTERFACE)
+		usb_xinput_configure();
 		#endif
 		endpoint0_receive(NULL, 0, 0);
 		return;

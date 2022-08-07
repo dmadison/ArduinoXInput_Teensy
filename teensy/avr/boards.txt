@@ -95,6 +95,9 @@ teensy41.menu.usb.flightsim.fake_serial=teensy_gateway
 teensy41.menu.usb.flightsimjoystick=Flight Sim Controls + Joystick
 teensy41.menu.usb.flightsimjoystick.build.usbtype=USB_FLIGHTSIM_JOYSTICK
 teensy41.menu.usb.flightsimjoystick.fake_serial=teensy_gateway
+teensy41.menu.usb.xinput=XInput
+teensy41.menu.usb.xinput.build.usbtype=USB_XINPUT
+teensy41.menu.usb.xinput.fake_serial=teensy_gateway
 #teensy41.menu.usb.disable=No USB
 #teensy41.menu.usb.disable.build.usbtype=USB_DISABLED
 
@@ -495,6 +498,9 @@ teensy40.menu.usb.flightsim.fake_serial=teensy_gateway
 teensy40.menu.usb.flightsimjoystick=Flight Sim Controls + Joystick
 teensy40.menu.usb.flightsimjoystick.build.usbtype=USB_FLIGHTSIM_JOYSTICK
 teensy40.menu.usb.flightsimjoystick.fake_serial=teensy_gateway
+teensy40.menu.usb.xinput=XInput
+teensy40.menu.usb.xinput.build.usbtype=USB_XINPUT
+teensy40.menu.usb.xinput.fake_serial=teensy_gateway
 #teensy40.menu.usb.disable=No USB
 #teensy40.menu.usb.disable.build.usbtype=USB_DISABLED
 

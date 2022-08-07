@@ -641,7 +641,9 @@ static uint8_t flightsim_report_desc[] = {
 #define EXPERIMENTAL_INTERFACE_DESC_SIZE 0
 #endif
 
+#ifndef CONFIG_DESC_SIZE
 #define CONFIG_DESC_SIZE		EXPERIMENTAL_INTERFACE_DESC_POS+EXPERIMENTAL_INTERFACE_DESC_SIZE
+#endif
 
 
 
@@ -661,8 +663,16 @@ PROGMEM const uint8_t usb_config_descriptor_480[CONFIG_DESC_SIZE] = {
         NUM_INTERFACE,                          // bNumInterfaces
         1,                                      // bConfigurationValue
         0,                                      // iConfiguration
+#ifdef DEVICE_ATTRIBUTES
+        DEVICE_ATTRIBUTES,
+#else
         0xC0,                                   // bmAttributes
+#endif
+#ifdef DEVICE_POWER
+        DEVICE_POWER,
+#else
         50,                                     // bMaxPower
+#endif
 
 #ifdef CDC_IAD_DESCRIPTOR
         // interface association descriptor, USB ECN, Table 9-Z
@@ -1663,6 +1673,109 @@ PROGMEM const uint8_t usb_config_descriptor_480[CONFIG_DESC_SIZE] = {
         LSB(512), MSB(512),                     // wMaxPacketSize
         1,                                      // bInterval
 #endif // EXPERIMENTAL_INTERFACE
+
+#ifdef XINPUT_INTERFACE
+        // configuration for 480 Mbit/sec speed
+        // Interface 0
+        9,                                      // bLength (length of interface descriptor 9 bytes)
+        4,                                      // bDescriptorType (4 is interface)
+        0,                                      // bInterfaceNumber (This is interface 0)
+        0,                                      // bAlternateSetting (used to select alternate setting.  notused)
+        2,                                      // bNumEndpoints (this interface has 2 endpoints)
+        0xFF,                                   // bInterfaceClass (Vendor Defined is 255)
+        0x5D,                                   // bInterfaceSubClass
+        0x01,                                   // bInterfaceProtocol
+        0,                                      // iInterface (Index of string descriptor for describing this notused)
+        // Some sort of common descriptor? I pulled this from Message Analyzer dumps of an actual controller
+        17,33,0,1,1,37,129,20,0,0,0,0,19,2,8,0,0,
+        // Endpoint 1 IN
+        7,                                      // bLength (length of ep1in in descriptor 7 bytes)
+        5,	                                    // bDescriptorType (5 is endpoint)
+        0x81,                                   // bEndpointAddress (0x81 is IN1)
+        0x03,                                   // bmAttributes (0x03 is interrupt no synch, usage type data)
+        0x20, 0x00,                             // wMaxPacketSize (0x0020 is 1x32 bytes)
+        4,                                      // bInterval (polling interval in frames 4 frames)
+        // Endpoint 2 OUT
+        7,                                      // bLength (length of ep2out in descriptor 7 bytes)
+        5,                                      // bDescriptorType (5 is endpoint)
+        0x02,                                   // bEndpointAddress (0x02 is OUT2)
+        0x03,                                   // bmAttributes (0x03 is interrupt no synch, usage type data)
+        0x20, 0x00,                             // wMaxPacketSize (0x0020 is 1x32 bytes)
+        8,                                      // bInterval (polling interval in frames 8 frames)
+        // Interface 1
+        9,                                      // bLength (length of interface descriptor 9 bytes)
+        4,                                      // bDescriptorType (4 is interface)
+        1,                                      // bInterfaceNumber (This is interface 1)
+        0,                                      // bAlternateSetting (used to select alternate setting.  notused)
+        4,                                      // bNumEndpoints (this interface has 4 endpoints)
+        0xFF,                                   // bInterfaceClass (Vendor Defined is 255)
+        0x5D,                                   // bInterfaceSubClass (93)
+        0x03,                                   // bInterfaceProtocol (3)
+        0,                                      // iInterface (Index of string descriptor for describing this notused)
+        // A different common descriptor? I pulled this from Message Analyzer dumps of an actual controller
+        27,33,0,1,1,1,131,64,1,4,32,22,133,0,0,0,0,0,0,22,5,0,0,0,0,0,0,
+        // Endpoint 3 IN
+        7,                                      // bLength (length of ep3in descriptor 7 bytes)
+        5,                                      // bDescriptorType (5 is endpoint)
+        0x83,                                   // bEndpointAddress (0x83 is IN3)
+        0x03,                                   // bmAttributes (0x03 is interrupt no synch, usage type data)
+        0x20, 0x00,                             // wMaxPacketSize (0x0020 is 1x32 bytes)
+        2,                                      // bInterval (polling interval in frames 2 frames)
+        // Endpoint 4 OUT
+        7,                                      // bLength (length of ep4out descriptor 7 bytes)
+        5,                                      // bDescriptorType (5 is endpoint)
+        0x04,                                   // bEndpointAddress (0x04 is OUT4)
+        0x03,                                   // bmAttributes (0x03 is interrupt no synch, usage type data)
+        0x20, 0x00,                             // wMaxPacketSize (0x0020 is 1x32 bytes)
+        4,                                      // bInterval (polling interval in frames 4 frames)
+        // Endpoint 5 IN
+        7,                                      // bLength (length of ep5in descriptor 7 bytes)
+        5,                                      // bDescriptorType (5 is endpoint)
+        0x85,                                   // bEndpointAddress (0x85 is IN5)
+        0x03,                                   // bmAttributes (0x03 is interrupt no synch, usage type data)
+        0x20, 0x00,                             // wMaxPacketSize (0x0020 is 1x32 bytes)
+        64,                                     // bInterval (polling interval in frames 64 frames)
+        // Endpoint 5 OUT (shares endpoint number with previous)
+        7,                                      // bLength (length of ep5out descriptor 7 bytes)
+        5,                                      // bDescriptorType (5 is endpoint)
+        0x05,                                   // bEndpointAddress (0x05 is OUT5)
+        0x03,                                   // bmAttributes (0x03 is interrupt no synch, usage type data)
+        0x20, 0x00,                             // wMaxPacketSize (0x0020 is 1x32 bytes)
+        16,                                     // bInterval (polling interval in frames 16 frames)
+        // Interface 2
+        9,                                      // bLength (length of interface descriptor 9 bytes)
+        4,                                      // bDescriptorType (4 is interface)
+        2,                                      // bInterfaceNumber (This is interface 2)
+        0,                                      // bAlternateSetting (used to select alternate setting.  notused)
+        1,                                      // bNumEndpoints (this interface has 4 endpoints)
+        0xFF,                                   // bInterfaceClass (Vendor Defined is 255)
+        0x5D,                                   // bInterfaceSubClass (93)
+        0x02,                                   // bInterfaceProtocol (3)
+        0,                                      // iInterface (Index of string descriptor for describing this notused)
+        // Common Descriptor.  Seems that these come after every interface description?
+        9,33,0,1,1,34,134,7,0,
+        // Endpoint 6 IN
+        7,                                      // bLength (length of ep6in descriptor 7 bytes)
+        5,                                      // bDescriptorType (5 is endpoint)
+        0x86,                                   // bEndpointAddress (0x86 is IN6)
+        0x03,                                   // bmAttributes (0x03 is interrupt no synch, usage type data)
+        0x20, 0x00,                             // wMaxPacketSize (0x0020 is 1x32 bytes)
+        16,                                     // bInterval (polling interval in frames 64 frames)+
+        // Interface 3
+        // This is the interface on which all the security handshaking takes place
+        // We don't use this but it could be used for man-in-the-middle stuff
+        9,                                      // bLength (length of interface descriptor 9 bytes)
+        4,                                      // bDescriptorType (4 is interface)
+        3,                                      // bInterfaceNumber (This is interface 3)
+        0,                                      // bAlternateSetting (used to select alternate setting.  notused)
+        0,                                      // bNumEndpoints (this interface has 0 endpoints ???)
+        0xFF,                                   // bInterfaceClass (Vendor Defined is 255)
+        0xFD,                                   // bInterfaceSubClass (253)
+        0x13,                                   // bInterfaceProtocol (19)
+        4,                                      // iInterface (Computer never asks for this, but an x360 would. so include one day?)
+        // Another interface another Common Descriptor
+        6,65,0,1,1,3
+#endif // XINPUT_INTERFACE
 };
 
 
@@ -1675,8 +1788,16 @@ PROGMEM const uint8_t usb_config_descriptor_12[CONFIG_DESC_SIZE] = {
         NUM_INTERFACE,                          // bNumInterfaces
         1,                                      // bConfigurationValue
         0,                                      // iConfiguration
+#ifdef DEVICE_ATTRIBUTES
+        DEVICE_ATTRIBUTES,
+#else
         0xC0,                                   // bmAttributes
+#endif
+#ifdef DEVICE_POWER
+        DEVICE_POWER,
+#else
         50,                                     // bMaxPower
+#endif
 
 #ifdef CDC_IAD_DESCRIPTOR
         // interface association descriptor, USB ECN, Table 9-Z
@@ -2677,6 +2798,109 @@ PROGMEM const uint8_t usb_config_descriptor_12[CONFIG_DESC_SIZE] = {
         LSB(64), MSB(64),                       // wMaxPacketSize
         1,                                      // bInterval
 #endif // EXPERIMENTAL_INTERFACE
+
+#ifdef XINPUT_INTERFACE
+        // configuration for 12 Mbit/sec speed
+        // Interface 0
+        9,                                      // bLength (length of interface descriptor 9 bytes)
+        4,                                      // bDescriptorType (4 is interface)
+        0,                                      // bInterfaceNumber (This is interface 0)
+        0,                                      // bAlternateSetting (used to select alternate setting.  notused)
+        2,                                      // bNumEndpoints (this interface has 2 endpoints)
+        0xFF,                                   // bInterfaceClass (Vendor Defined is 255)
+        0x5D,                                   // bInterfaceSubClass
+        0x01,                                   // bInterfaceProtocol
+        0,                                      // iInterface (Index of string descriptor for describing this notused)
+        // Some sort of common descriptor? I pulled this from Message Analyzer dumps of an actual controller
+        17,33,0,1,1,37,129,20,0,0,0,0,19,2,8,0,0,
+        // Endpoint 1 IN
+        7,                                      // bLength (length of ep1in in descriptor 7 bytes)
+        5,	                                    // bDescriptorType (5 is endpoint)
+        0x81,                                   // bEndpointAddress (0x81 is IN1)
+        0x03,                                   // bmAttributes (0x03 is interrupt no synch, usage type data)
+        0x20, 0x00,                             // wMaxPacketSize (0x0020 is 1x32 bytes)
+        4,                                      // bInterval (polling interval in frames 4 frames)
+        // Endpoint 2 OUT
+        7,                                      // bLength (length of ep2out in descriptor 7 bytes)
+        5,                                      // bDescriptorType (5 is endpoint)
+        0x02,                                   // bEndpointAddress (0x02 is OUT2)
+        0x03,                                   // bmAttributes (0x03 is interrupt no synch, usage type data)
+        0x20, 0x00,                             // wMaxPacketSize (0x0020 is 1x32 bytes)
+        8,                                      // bInterval (polling interval in frames 8 frames)
+        // Interface 1
+        9,                                      // bLength (length of interface descriptor 9 bytes)
+        4,                                      // bDescriptorType (4 is interface)
+        1,                                      // bInterfaceNumber (This is interface 1)
+        0,                                      // bAlternateSetting (used to select alternate setting.  notused)
+        4,                                      // bNumEndpoints (this interface has 4 endpoints)
+        0xFF,                                   // bInterfaceClass (Vendor Defined is 255)
+        0x5D,                                   // bInterfaceSubClass (93)
+        0x03,                                   // bInterfaceProtocol (3)
+        0,                                      // iInterface (Index of string descriptor for describing this notused)
+        // A different common descriptor? I pulled this from Message Analyzer dumps of an actual controller
+        27,33,0,1,1,1,131,64,1,4,32,22,133,0,0,0,0,0,0,22,5,0,0,0,0,0,0,
+        // Endpoint 3 IN
+        7,                                      // bLength (length of ep3in descriptor 7 bytes)
+        5,                                      // bDescriptorType (5 is endpoint)
+        0x83,                                   // bEndpointAddress (0x83 is IN3)
+        0x03,                                   // bmAttributes (0x03 is interrupt no synch, usage type data)
+        0x20, 0x00,                             // wMaxPacketSize (0x0020 is 1x32 bytes)
+        2,                                      // bInterval (polling interval in frames 2 frames)
+        // Endpoint 4 OUT
+        7,                                      // bLength (length of ep4out descriptor 7 bytes)
+        5,                                      // bDescriptorType (5 is endpoint)
+        0x04,                                   // bEndpointAddress (0x04 is OUT4)
+        0x03,                                   // bmAttributes (0x03 is interrupt no synch, usage type data)
+        0x20, 0x00,                             // wMaxPacketSize (0x0020 is 1x32 bytes)
+        4,                                      // bInterval (polling interval in frames 4 frames)
+        // Endpoint 5 IN
+        7,                                      // bLength (length of ep5in descriptor 7 bytes)
+        5,                                      // bDescriptorType (5 is endpoint)
+        0x85,                                   // bEndpointAddress (0x85 is IN5)
+        0x03,                                   // bmAttributes (0x03 is interrupt no synch, usage type data)
+        0x20, 0x00,                             // wMaxPacketSize (0x0020 is 1x32 bytes)
+        64,                                     // bInterval (polling interval in frames 64 frames)
+        // Endpoint 5 OUT (shares endpoint number with previous)
+        7,                                      // bLength (length of ep5out descriptor 7 bytes)
+        5,                                      // bDescriptorType (5 is endpoint)
+        0x05,                                   // bEndpointAddress (0x05 is OUT5)
+        0x03,                                   // bmAttributes (0x03 is interrupt no synch, usage type data)
+        0x20, 0x00,                             // wMaxPacketSize (0x0020 is 1x32 bytes)
+        16,                                     // bInterval (polling interval in frames 16 frames)
+        // Interface 2
+        9,                                      // bLength (length of interface descriptor 9 bytes)
+        4,                                      // bDescriptorType (4 is interface)
+        2,                                      // bInterfaceNumber (This is interface 2)
+        0,                                      // bAlternateSetting (used to select alternate setting.  notused)
+        1,                                      // bNumEndpoints (this interface has 4 endpoints)
+        0xFF,                                   // bInterfaceClass (Vendor Defined is 255)
+        0x5D,                                   // bInterfaceSubClass (93)
+        0x02,                                   // bInterfaceProtocol (3)
+        0,                                      // iInterface (Index of string descriptor for describing this notused)
+        // Common Descriptor.  Seems that these come after every interface description?
+        9,33,0,1,1,34,134,7,0,
+        // Endpoint 6 IN
+        7,                                      // bLength (length of ep6in descriptor 7 bytes)
+        5,                                      // bDescriptorType (5 is endpoint)
+        0x86,                                   // bEndpointAddress (0x86 is IN6)
+        0x03,                                   // bmAttributes (0x03 is interrupt no synch, usage type data)
+        0x20, 0x00,                             // wMaxPacketSize (0x0020 is 1x32 bytes)
+        16,                                     // bInterval (polling interval in frames 64 frames)+
+        // Interface 3
+        // This is the interface on which all the security handshaking takes place
+        // We don't use this but it could be used for man-in-the-middle stuff
+        9,                                      // bLength (length of interface descriptor 9 bytes)
+        4,                                      // bDescriptorType (4 is interface)
+        3,                                      // bInterfaceNumber (This is interface 3)
+        0,                                      // bAlternateSetting (used to select alternate setting.  notused)
+        0,                                      // bNumEndpoints (this interface has 0 endpoints ???)
+        0xFF,                                   // bInterfaceClass (Vendor Defined is 255)
+        0xFD,                                   // bInterfaceSubClass (253)
+        0x13,                                   // bInterfaceProtocol (19)
+        4,                                      // iInterface (Computer never asks for this, but an x360 would. so include one day?)
+        // Another interface another Common Descriptor
+        6,65,0,1,1,3
+#endif // XINPUT_INTERFACE
 };
 
 
@@ -2731,6 +2955,22 @@ struct usb_string_descriptor_struct usb_string_serial_number_default = {
         3,
         {0,0,0,0,0,0,0,0,0,0}
 };
+
+#ifdef XINPUT_INTERFACE
+struct usb_string_descriptor_struct usb_string_xinput_security_descriptor = {
+        2 + 88 * 2,
+        3,
+        {
+            'X', 'b', 'o', 'x', ' ', 'S', 'e', 'c', 'u', 'r', 'i', 't', 'y', ' ', 'M', 'e',
+            't', 'h', 'o', 'd', ' ', '3', ',', ' ', 'V', 'e', 'r', 's', 'i', 'o', 'n', ' ',
+            '1', '.', '0', '0', ',', ' ', 0xA9, ' ', '2', '0', '0', '5', ' ', 'M', 'i', 'c',
+            'r', 'o', 's', 'o', 'f', 't', ' ', 'C', 'o', 'r', 'p', 'o', 'r', 'a', 't', 'i',
+            'o', 'n', '.', ' ', 'A', 'l', 'l', ' ', 'r', 'i', 'g', 'h', 't', 's', ' ', 'r',
+            'e', 's', 'e', 'r', 'v', 'e', 'd', '.'
+        }
+};
+#endif
+
 #ifdef MTP_INTERFACE
 PROGMEM const struct usb_string_descriptor_struct usb_string_mtp = {
 	2 + 3 * 2,
@@ -2808,6 +3048,9 @@ const usb_descriptor_list_t usb_descriptor_list[] = {
         {0x0301, 0x0409, (const uint8_t *)&usb_string_manufacturer_name, 0},
         {0x0302, 0x0409, (const uint8_t *)&usb_string_product_name, 0},
         {0x0303, 0x0409, (const uint8_t *)&usb_string_serial_number, 0},
+#ifdef XINPUT_INTERFACE
+        {0x0304, 0x0409, (const uint8_t *)&usb_string_xinput_security_descriptor, 0},
+#endif
 	{0, 0, NULL, 0}
 };
 
