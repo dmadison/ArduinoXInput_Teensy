@@ -37,6 +37,8 @@ These board definitions make use of Microsoft's VID and PID in order to latch on
 
 A massive thank you to Zach Littell, whose did all of the original legwork in putting this together. Check out some of his stuff at [zlittell.com](http://www.zlittell.com).
 
+Another big thanks for Tom Mason ([@wheybags](https://github.com/wheybags)), who added support for the Teensy 4 boards ([#26](https://github.com/dmadison/ArduinoXInput_Teensy/pull/26)).
+
 ## License
 
 The original Teensy core files and their modified versions are licensed under a modified version of the permissive [MIT license](https://opensource.org/licenses/MIT). Newly contributed files are licensed under the MIT license with no additional stipulations.
