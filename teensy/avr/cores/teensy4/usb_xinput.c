@@ -92,9 +92,6 @@ static void rx_event(transfer_t *t)
 
 void usb_xinput_configure()
 {
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, LOW);
-
   memset(tx_transfer, 0, sizeof(tx_transfer));
   tx_head = 0;
   usb_config_tx(XINPUT_TX_ENDPOINT, XINPUT_TX_SIZE, 0, NULL);
@@ -146,12 +143,6 @@ int usb_xinput_recv(void *buffer, uint8_t nbytes)
 
     uint8_t* p = rx_buffer + ii * XINPUT_RX_SIZE;
     memcpy(buffer, p, count);
-
-    if (count >= 5 && p[0] == 0x00)
-    {
-      int rumbling = (p[3] > 0 || p[4] > 0 );
-      digitalWrite(LED_BUILTIN, rumbling);
-    }
 
     rx_available -= rx_count[ii];
     rx_tail = tail;
