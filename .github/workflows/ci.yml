@@ -30,7 +30,7 @@ jobs:
     
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Arduino IDE
         run: |
@@ -70,3 +70,9 @@ jobs:
 
       - name: Teensy 3.6
         run: arduino --verify --board teensy:avr:teensy36:usb=${{ matrix.usb_mode }},speed=180,opt=o2std,keys=en-us ${{ matrix.sketch }};
+
+      - name: Teensy 4.0
+        run: arduino --verify --board teensy:avr:teensy40:usb=${{ matrix.usb_mode }},speed=600,opt=o2std,keys=en-us ${{ matrix.sketch }};
+
+      - name: Teensy 4.1
+        run: arduino --verify --board teensy:avr:teensy41:usb=${{ matrix.usb_mode }},speed=600,opt=o2std,keys=en-us ${{ matrix.sketch }};
