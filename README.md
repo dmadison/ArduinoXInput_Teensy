@@ -22,6 +22,7 @@ To uninstall, restore your 'teensy' folder from a backup or reinstall Teensyduin
 * [Teensy LC](https://www.pjrc.com/store/teensylc.html)
 * [Teensy 4.0](https://www.pjrc.com/store/teensy40.html)
 * [Teensy 4.1](https://www.pjrc.com/store/teensy41.html)
+* [Teensy MicroMod](https://www.sparkfun.com/products/16402)
 
 ## Limitations
 
