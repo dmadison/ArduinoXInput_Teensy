@@ -76,3 +76,6 @@ jobs:
 
       - name: Teensy 4.1
         run: arduino --verify --board teensy:avr:teensy41:usb=${{ matrix.usb_mode }},speed=600,opt=o2std,keys=en-us ${{ matrix.sketch }};
+
+      - name: Teensy MicroMod
+        run: arduino --verify --board teensy:avr:teensyMM:usb=${{ matrix.usb_mode }},speed=600,opt=o2std,keys=en-us ${{ matrix.sketch }};
