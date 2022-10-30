@@ -430,7 +430,7 @@ static void endpoint0_setup(uint64_t setupdata)
 		usb_configuration = setup.wValue;
 		// configure all other endpoints
 		#if defined(ENDPOINT1_CONFIG)
-		USB1_ENDPTCTRL1 = ENDPOINT1_CONFIG;
+		USB1_ENDPTCTRL1 = ENDPOINT1_CONFIG;  // added for XInput TX
 		#endif
 		#if defined(ENDPOINT2_CONFIG)
 		USB1_ENDPTCTRL2 = ENDPOINT2_CONFIG;
@@ -676,7 +676,32 @@ static void endpoint0_setup(uint64_t setupdata)
 		}
 		break;
 #endif
+#if defined(MTP_INTERFACE)
+	  case 0x6421: // Cancel Request, Still Image Class 1.0, 5.2.1, page 8
+		if (setup.wLength == 6) {
+			endpoint0_setupdata.bothwords = setupdata;
+			endpoint0_receive(endpoint0_buffer, setup.wLength, 1);
+			return;
+		}
+		break;
+	  case 0x65A1: // Get Extended Event Data, Still Image Class 1.0, 5.2.2, page 9
+		break;
+	  case 0x6621: // Device Reset, Still Image Class 1.0, 5.2.3 page 10
+		break;
+	  case 0x67A1: // Get Device Status, Still Image Class 1.0, 5.2.4, page 10
+		if (setup.wLength >= 4) {
+			endpoint0_buffer[0] = 4;
+			endpoint0_buffer[1] = 0;
+			endpoint0_buffer[2] = usb_mtp_status;
+			endpoint0_buffer[3] = 0x20;
+			endpoint0_transmit(endpoint0_buffer, 4, 0);
+			//if (usb_mtp_status == 0x19) usb_mtp_status = 0x01; // testing only
+			return;
+		}
+		break;
+#endif
 	}
+	printf("endpoint 0 stall\n");
 	USB1_ENDPTCTRL0 = 0x000010001; // stall
 }
 
@@ -822,6 +847,16 @@ static void endpoint0_complete(void)
 		usb_audio_set_feature(&endpoint0_setupdata, endpoint0_buffer);
 	}
 #endif
+#ifdef MTP_INTERFACE
+	if (setup.wRequestAndType == 0x6421) {
+		if (endpoint0_buffer[0] == 0x01 && endpoint0_buffer[1] == 0x40) {
+			printf("MTP cancel, transaction ID=%08X\n",
+			  endpoint0_buffer[2] | (endpoint0_buffer[3] << 8) |
+			  (endpoint0_buffer[4] << 16) | (endpoint0_buffer[5] << 24));
+			usb_mtp_status = 0x19; // 0x19 = host initiated cancel
+		}
+	}
+#endif
 #ifdef XINPUT_INTERFACE
 	// dummy reads to suppress '-Wunused-but-set-variable' and '-Wunused-variable' warnings from GCC
 	(void) setup.wIndex;
@@ -840,7 +875,7 @@ static void usb_endpoint_config(endpoint_t *qh, uint32_t config, void (*callback
 void usb_config_rx(uint32_t ep, uint32_t packet_size, int do_zlp, void (*cb)(transfer_t *))
 {
 	uint32_t config = (packet_size << 16) | (do_zlp ? 0 : (1 << 29));
-	if (ep < 1 || ep > NUM_ENDPOINTS) return;
+	if (ep < 1 || ep > NUM_ENDPOINTS) return;  // XInput, allow access to endpoint 1
 	usb_endpoint_config(endpoint_queue_head + ep * 2, config, cb);
 	if (cb) endpointN_notify_mask |= (1 << ep);
 }
@@ -848,7 +883,7 @@ void usb_config_rx(uint32_t ep, uint32_t packet_size, int do_zlp, void (*cb)(tra
 void usb_config_tx(uint32_t ep, uint32_t packet_size, int do_zlp, void (*cb)(transfer_t *))
 {
 	uint32_t config = (packet_size << 16) | (do_zlp ? 0 : (1 << 29));
-	if (ep < 1 || ep > NUM_ENDPOINTS) return;
+	if (ep < 1 || ep > NUM_ENDPOINTS) return;  // XInput, allow access to endpoint 1
 	usb_endpoint_config(endpoint_queue_head + ep * 2 + 1, config, cb);
 	if (cb) endpointN_notify_mask |= (1 << (ep + 16));
 }
@@ -857,7 +892,7 @@ void usb_config_rx_iso(uint32_t ep, uint32_t packet_size, int mult, void (*cb)(t
 {
 	if (mult < 1 || mult > 3) return;
 	uint32_t config = (packet_size << 16) | (mult << 30);
-	if (ep < 1 || ep > NUM_ENDPOINTS) return;
+	if (ep < 1 || ep > NUM_ENDPOINTS) return;  // XInput, allow access to endpoint 1
 	usb_endpoint_config(endpoint_queue_head + ep * 2, config, cb);
 	if (cb) endpointN_notify_mask |= (1 << ep);
 }
@@ -866,7 +901,7 @@ void usb_config_tx_iso(uint32_t ep, uint32_t packet_size, int mult, void (*cb)(t
 {
 	if (mult < 1 || mult > 3) return;
 	uint32_t config = (packet_size << 16) | (mult << 30);
-	if (ep < 1 || ep > NUM_ENDPOINTS) return;
+	if (ep < 1 || ep > NUM_ENDPOINTS) return;  // XInput, allow access to endpoint 1
 	usb_endpoint_config(endpoint_queue_head + ep * 2 + 1, config, cb);
 	if (cb) endpointN_notify_mask |= (1 << (ep + 16));
 }
@@ -1028,7 +1063,7 @@ static void run_callbacks(endpoint_t *ep)
 
 void usb_transmit(int endpoint_number, transfer_t *transfer)
 {
-	if (endpoint_number < 1 || endpoint_number > NUM_ENDPOINTS) return;
+	if (endpoint_number < 1 || endpoint_number > NUM_ENDPOINTS) return;  // XInput, allow access to endpoint 1
 	endpoint_t *endpoint = endpoint_queue_head + endpoint_number * 2 + 1;
 	uint32_t mask = 1 << (endpoint_number + 16);
 	schedule_transfer(endpoint, mask, transfer);
@@ -1036,7 +1071,7 @@ void usb_transmit(int endpoint_number, transfer_t *transfer)
 
 void usb_receive(int endpoint_number, transfer_t *transfer)
 {
-	if (endpoint_number < 1 || endpoint_number > NUM_ENDPOINTS) return;
+	if (endpoint_number < 1 || endpoint_number > NUM_ENDPOINTS) return;  // XInput, allow access to endpoint 1
 	endpoint_t *endpoint = endpoint_queue_head + endpoint_number * 2;
 	uint32_t mask = 1 << endpoint_number;
 	schedule_transfer(endpoint, mask, transfer);
