@@ -641,6 +641,7 @@ static uint8_t flightsim_report_desc[] = {
 #define EXPERIMENTAL_INTERFACE_DESC_SIZE 0
 #endif
 
+// XInput defines its own descriptor size
 #ifndef CONFIG_DESC_SIZE
 #define CONFIG_DESC_SIZE		EXPERIMENTAL_INTERFACE_DESC_POS+EXPERIMENTAL_INTERFACE_DESC_SIZE
 #endif
@@ -664,12 +665,12 @@ PROGMEM const uint8_t usb_config_descriptor_480[CONFIG_DESC_SIZE] = {
         1,                                      // bConfigurationValue
         0,                                      // iConfiguration
 #ifdef DEVICE_ATTRIBUTES
-        DEVICE_ATTRIBUTES,
+        DEVICE_ATTRIBUTES,                      // bmAttributes (XInput)
 #else
         0xC0,                                   // bmAttributes
 #endif
 #ifdef DEVICE_POWER
-        DEVICE_POWER,
+        DEVICE_POWER,                           // bMaxPower (XInput)
 #else
         50,                                     // bMaxPower
 #endif
@@ -1789,12 +1790,12 @@ PROGMEM const uint8_t usb_config_descriptor_12[CONFIG_DESC_SIZE] = {
         1,                                      // bConfigurationValue
         0,                                      // iConfiguration
 #ifdef DEVICE_ATTRIBUTES
-        DEVICE_ATTRIBUTES,
+        DEVICE_ATTRIBUTES,                      // bmAttributes (XInput)
 #else
         0xC0,                                   // bmAttributes
 #endif
 #ifdef DEVICE_POWER
-        DEVICE_POWER,
+        DEVICE_POWER,                           // bMaxPower (XInput)
 #else
         50,                                     // bMaxPower
 #endif
