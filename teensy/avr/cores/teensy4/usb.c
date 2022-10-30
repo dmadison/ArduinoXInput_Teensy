@@ -822,6 +822,11 @@ static void endpoint0_complete(void)
 		usb_audio_set_feature(&endpoint0_setupdata, endpoint0_buffer);
 	}
 #endif
+#ifdef XINPUT_INTERFACE
+	// dummy reads to suppress '-Wunused-but-set-variable' and '-Wunused-variable' warnings from GCC
+	(void) setup.wIndex;
+	(void) endpoint0_buffer;
+#endif
 }
 
 static void usb_endpoint_config(endpoint_t *qh, uint32_t config, void (*callback)(transfer_t *))
