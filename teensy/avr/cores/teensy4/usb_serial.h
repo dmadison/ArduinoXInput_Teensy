@@ -77,7 +77,7 @@ public:
 	// is not used.  Communication occurs at USB native speed.  For
 	// compatibility with Arduino code, Serial.begin waits up to 2 seconds
 	// for your PC to open the virtual serial port.
-        void begin(long baud_unused) {
+        void begin(long baud_unused __attribute__((unused))) {
 		uint32_t millis_begin = systick_millis_count;
 		while (!(*this)) {
 			uint32_t elapsed = systick_millis_count - millis_begin;
@@ -298,7 +298,9 @@ public:
         uint8_t numbits(void) { return usb_cdc2_line_coding[1] >> 16; }
         uint8_t dtr(void) { return (usb_cdc2_line_rtsdtr & USB_SERIAL_DTR) ? 1 : 0; }
         uint8_t rts(void) { return (usb_cdc2_line_rtsdtr & USB_SERIAL_RTS) ? 1 : 0; }
-        operator bool() { return usb_configuration && (usb_cdc2_line_rtsdtr & USB_SERIAL_DTR) &&
+        operator bool() {
+		yield();
+		return usb_configuration && (usb_cdc2_line_rtsdtr & USB_SERIAL_DTR) &&
                 ((uint32_t)(systick_millis_count - usb_cdc2_line_rtsdtr_millis) >= 15);
         }
         size_t readBytes(char *buffer, size_t length) {
@@ -386,7 +388,9 @@ public:
         uint8_t numbits(void) { return usb_cdc3_line_coding[1] >> 16; }
         uint8_t dtr(void) { return (usb_cdc3_line_rtsdtr & USB_SERIAL_DTR) ? 1 : 0; }
         uint8_t rts(void) { return (usb_cdc3_line_rtsdtr & USB_SERIAL_RTS) ? 1 : 0; }
-        operator bool() { return usb_configuration && (usb_cdc3_line_rtsdtr & USB_SERIAL_DTR) &&
+        operator bool() {
+		yield();
+		return usb_configuration && (usb_cdc3_line_rtsdtr & USB_SERIAL_DTR) &&
                 ((uint32_t)(systick_millis_count - usb_cdc3_line_rtsdtr_millis) >= 15);
         }
         size_t readBytes(char *buffer, size_t length) {
