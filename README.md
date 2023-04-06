@@ -7,13 +7,35 @@ This is meant to be used in conjunction with the [ArduinoXInput library](https:/
  
 ## Installation
 
-You must have both [Arduino](https://www.arduino.cc/en/main/software) and [Teensyduino](https://www.pjrc.com/teensy/td_download.html) installed before proceeding. Double-check that your installed Teensyduino version matches the files provided in this repository. This repository is currently using version [**1.58**](https://www.pjrc.com/teensy/td_158). If you don't know your Teensyduino version, compile a blank sketch with a Teensy board selected and the Teensy Loader will open. In the Teensy Loader window select `Help -> About` and it will tell you the version number. If your version does not match you will have to reinstall or update the Teensyduino software.
+You must have both [the Arduino IDE](https://www.arduino.cc/en/main/software) and [Teensyduino](https://www.pjrc.com/teensy/td_download.html) installed before proceeding.
 
-Navigate to your Arduino installation directory and open up the 'hardware' folder. It is recommended that you make a backup of this folder before proceeding in case something goes wrong or if you want to revert the installation.
+Double-check that your installed Teensyduino version matches the files provided in this repository. This repository is currently using [**Teensyduino 1.58**](https://www.pjrc.com/teensy/td_158). You can download older versions on [the releases page](../../releases).
 
-To install, copy the files from the repository's "teensy" directory into the hardware folder and replace any pre-existing files. This will not affect your saved sketches.
+If you don't know your Teensyduino version, compile a blank sketch with a Teensy board selected and the Teensy Loader will open. In the Teensy Loader window select `Help -> About` and it will tell you the version number. If your version does not match you will have to reinstall or update the Teensyduino software.
 
-To uninstall, restore your 'teensy' folder from a backup or reinstall Teensyduino.
+It is recommended that you make a backup of your hardware folder before proceeding in case something goes wrong or if you want to revert the installation.
+
+To install the XInput modifications, copy the files from the repository's "teensy" directory into the hardware folder and replace any pre-existing files. This will not affect your saved sketches.
+
+To remove the XInput modifications, restore your Teensy hardware folder from backup or reinstall the Teensyduino software.
+
+#### Arduino IDE 1.x
+
+For IDE version 1.x the Teensy hardware files are located in your Arduino IDE installation directory. On Windows this is typically in your "Program Files" folder:
+
+```
+C:\Program Files (x86)\Arduino\hardware\teensy\avr
+```
+
+#### Arduino IDE 2.x
+
+For IDE version 2.x the Teensy hardware files are located in your application data folder. On Windows this is typically at the following path:
+
+```
+%AppData%\..\Local\Arduino15\packages\teensy\hardware\avr\{version}
+```
+
+Where `{version}` is the installed version number of the Teensyduino software.
 
 ## Supported Boards
 
