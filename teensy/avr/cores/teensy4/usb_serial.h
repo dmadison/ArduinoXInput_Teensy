@@ -186,7 +186,6 @@ public:
 };
 // Serial provides USB Virtual Serial communication with your computer.
 extern usb_serial_class Serial;
-extern void serialEvent(void) __attribute__((weak));
 #endif // __cplusplus
 
 #else  // !defined(USB_DISABLED)
@@ -224,6 +223,7 @@ public:
 };
 
 extern usb_serial_class Serial;
+extern void serialEvent(void) __attribute__((weak));
 #endif // __cplusplus
 
 #endif // !defined(USB_DISABLED)
