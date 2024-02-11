@@ -9,7 +9,7 @@ This is meant to be used in conjunction with the [ArduinoXInput library](https:/
 
 You must have both [the Arduino IDE](https://www.arduino.cc/en/main/software) and [Teensyduino](https://www.pjrc.com/teensy/td_download.html) installed before proceeding.
 
-Double-check that your installed Teensyduino version matches the files provided in this repository. This repository is currently using [**Teensyduino 1.58**](https://www.pjrc.com/teensy/td_158). You can download older versions on [the releases page](../../releases).
+Double-check that your installed Teensyduino version matches the files provided in this repository. This repository is currently using [**Teensyduino 1.59**](https://www.pjrc.com/teensy/td_159). You can download older versions on [the releases page](../../releases).
 
 If you don't know your Teensyduino version, compile a blank sketch with a Teensy board selected and the Teensy Loader will open. In the Teensy Loader window select `Help -> About` and it will tell you the version number. If your version does not match you will have to reinstall or update the Teensyduino software.
 
@@ -36,6 +36,8 @@ For IDE version 2.x the Teensy hardware files are located in your application da
 ```
 
 Where `{version}` is the installed version number of the Teensyduino software.
+
+Version 2 of the IDE is reported to have issues with caching board files, which may prevent this project from loading or functioning properly. Consider using the version 1 IDE if you run into problems with installation.
 
 ## Supported Boards
 
