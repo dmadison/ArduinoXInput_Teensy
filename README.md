@@ -37,6 +37,8 @@ For IDE version 2.x the Teensy hardware files are located in your application da
 
 Where `{version}` is the installed version number of the Teensyduino software.
 
+Version 2 of the IDE is reported to have issues with caching board files, which may prevent this project from loading or functioning properly. Consider using the version 1 IDE if you run into problems with installation.
+
 ## Supported Boards
 
 * [Teensy 3.6](https://www.pjrc.com/store/teensy36.html)
