@@ -21,18 +21,30 @@ To remove the XInput modifications, restore your Teensy hardware folder from bac
 
 #### Arduino IDE 1.x
 
-For IDE version 1.x the Teensy hardware files are located in your Arduino IDE installation directory. On Windows this is typically in your "Program Files" folder:
+For IDE version 1.x the Teensy hardware files are located in your Arduino IDE installation directory. 
 
+On Windows this is typically in your "Program Files" folder:
 ```
 C:\Program Files (x86)\Arduino\hardware\teensy\avr
 ```
 
+On macOS this is the folder path:
+```
+~/Library/Arduino/hardware/teensy/avr
+```
+
 #### Arduino IDE 2.x
 
-For IDE version 2.x the Teensy hardware files are located in your application data folder. On Windows this is typically at the following path:
+For IDE version 2.x the Teensy hardware files are located in your application data folder. 
 
+On Windows this is typically at the following path:
 ```
 %AppData%\..\Local\Arduino15\packages\teensy\hardware\avr\{version}
+```
+
+On macOS this is the folder path:
+```
+~/Library/Arduino15/packages/teensy/hardware/avr/{version}
 ```
 
 Where `{version}` is the installed version number of the Teensyduino software.
