@@ -223,7 +223,7 @@ public:
 };
 
 extern usb_serial_class Serial;
-extern void serialEvent(void) __attribute__((weak));
+extern void serialEvent(void) __attribute__((weak));  // required for XInput compatibility
 #endif // __cplusplus
 
 #endif // !defined(USB_DISABLED)
